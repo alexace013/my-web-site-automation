@@ -3,25 +3,36 @@ package utils;
 import lombok.extern.log4j.Log4j;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 @Log4j
 public class PropertyController {
 
-    private static final String PROPERTY_FILE = "/common.properties";
+    private static final String[] PROPERTIES_FILES =
+            {
+                    "/common.properties",
+                    "/test.properties"
+            };
+    private static Map propertiesMapping;
 
-    public static String loadProperty(final String propertyName) {
+    private static void loadProperties() {
         Properties properties = new Properties();
         try {
-            properties.load(PropertyController.class.getResourceAsStream(PROPERTY_FILE));
+            for (String PROPERTY : PROPERTIES_FILES) {
+                properties.load(PropertyController.class.getResourceAsStream(PROPERTY));
+                propertiesMapping = properties;
+            }
         } catch (IOException e) {
-            log.error(String.format("incorrect property name <%s>\n%s", propertyName, e.getMessage()));
+            log.error(String.format("Something wrong with properties <%s>", PROPERTIES_FILES));
         }
-        String propertyValue = null;
-        if (propertyName != null) {
-            propertyValue = properties.getProperty(propertyName);
+    }
+
+    public static synchronized String loadProperty(final String propertyName) {
+        if (propertiesMapping == null) {
+            loadProperties();
         }
-        return propertyValue;
+        return String.valueOf(propertiesMapping.get(propertyName));
     }
 
 }

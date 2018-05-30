@@ -26,3 +26,4 @@ hs_err_pid*
 /my-web-site-automation.iml
 
 /.idea
+/target
