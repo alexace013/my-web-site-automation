@@ -1,0 +1,7 @@
+It is a combination of
+
+Ticking the "Enable annotation processing" checkbox in Settings->Compiler->Annotation Processors.
+
+and
+
+Install the plugin of Lombok for idea and restart for change to take effect.
