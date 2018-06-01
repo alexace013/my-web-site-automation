@@ -1,30 +1,51 @@
 package unit.utils;
 
+import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import utils.PropertyController;
 
+@Log4j
+@DisplayName("PROPERTY CONTROLLER TESTS")
 public class PropertyControllerTest {
 
     private static final String TEST_PROP_NAME = "test.prop.name";
 
     @Test
-    public void loadPropertyPositiveTest() {
+    @RepeatedTest(2)
+    @DisplayName("Test_00-01: PropertyController - positive test")
+    void loadPropertyPositiveTest() {
         Assert.assertEquals("Something wrong with test.properties",
                 "test.prop.value", PropertyController.loadProperty(TEST_PROP_NAME));
     }
 
     @Test
-    public void loadPropertyNegativeTest() {
+    @DisplayName("Test_00-02: PropertyController - negative test")
+    void loadPropertyNegativeTest() {
         Assert.assertNotEquals("Something wrong with test.properties",
                 "test", PropertyController.loadProperty(TEST_PROP_NAME));
     }
 
     @Test
-    public void loadPropertyNullTest() {
-        // TODO assert message fix
+    @DisplayName("Test_00-03: PropertyController - invalid property data")
+    void loadPropertyInvalidPropertyTest() {
         Assert.assertEquals("java.lang.String<null>", "null", PropertyController.loadProperty("test"));
-//        Assert.assertNull("should be null", PropertyController.loadProperty("test"));
+    }
+
+    @Test
+    @Disabled(value = "loadPropertyNullPropertyTest method is disabled")
+    @DisplayName("Test_00-04: PropertyLoader - null property data")
+    void loadPropertyNullPropertyTest() {
+        try {
+            String result = PropertyController.loadProperty(null);
+            log.debug(result);
+            Assert.assertNull("should be null", result);
+        } catch (NullPointerException e) {
+            log.error(String.format("%s", e), e);
+        }
     }
 
 }
