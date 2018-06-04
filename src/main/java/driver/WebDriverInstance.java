@@ -29,7 +29,7 @@ public class WebDriverInstance {
         chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("disable-infobars");
         chromeOptions.addArguments("--disable-extensions");
-//        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
