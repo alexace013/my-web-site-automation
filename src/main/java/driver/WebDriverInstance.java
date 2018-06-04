@@ -26,9 +26,14 @@ public class WebDriverInstance {
         DesiredCapabilities desiredCapabilities;
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + getChromeDriverPath());
         ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("disable-infobars");
+        chromeOptions.addArguments("--disable-extensions");
+//        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;
     }
