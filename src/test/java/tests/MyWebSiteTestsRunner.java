@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                 "json:target/report/cucumber-report.json"},
         features = {"src/test/resources/features"},
         glue = {"tests/stepsDefinitions"},
-        tags = {"@MainPage, @Test"}
+        tags = {"@MainPage, @SupportPage, @Rest"}
 )
 public class MyWebSiteTestsRunner extends Fixture {
 }

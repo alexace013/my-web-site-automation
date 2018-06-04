@@ -2,7 +2,6 @@ package tests.stepsDefinitions;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
 import tests.Fixture;
@@ -10,10 +9,10 @@ import tests.Fixture;
 @Log4j
 public class CommonPageStepsDefinitions extends Fixture {
 
-    @Given("^user opens (\\D+ page)$")
-    @When("^user navigates to (\\D+) page$")
+    @Given("^user opens (\\D+) page$")
     public void userNavigatesToPage(final String pageUrl) {
         myWebSite.actions.openPage(pageUrl);
+//        myWebSite.actions.navigateToPage("http://alexanderbakhin.com/");
         myWebSite.actions.waitForPageLoaded();
     }
 
@@ -22,10 +21,5 @@ public class CommonPageStepsDefinitions extends Fixture {
         String actualPageUrl = myWebSite.actions.getCurrentUrl();
         log.info(String.format("navigated to: %s", actualPageUrl));
         Assert.assertEquals("Was opened incorrectly page", expectedPageUrl, actualPageUrl);
-    }
-
-    @Then("^page status code is (\\d+)$")
-    public void statusCodeIs(final String statusCode) {
-        // TODO 3
     }
 }
