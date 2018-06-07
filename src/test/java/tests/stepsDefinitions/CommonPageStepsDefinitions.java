@@ -12,7 +12,6 @@ public class CommonPageStepsDefinitions extends Fixture {
     @Given("^user opens (\\D+) page$")
     public void userNavigatesToPage(final String pageUrl) {
         myWebSite.actions.openPage(pageUrl);
-//        myWebSite.actions.navigateToPage("http://alexanderbakhin.com/");
         myWebSite.actions.waitForPageLoaded();
     }
 

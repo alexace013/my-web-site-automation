@@ -22,4 +22,16 @@ public class AbstractPage {
         this.page = page;
     }
 
+    public void openPage() {
+        driver.navigate().to(page);
+    }
+
+    public void openPage(final String url) {
+        driver.navigate().to(url);
+    }
+
+    public boolean isPage(final String url) {
+        log.debug(String.format("URL: %s", url));
+        return url.equals(page);
+    }
 }

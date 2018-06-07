@@ -5,13 +5,12 @@ import lombok.Getter;
 @Getter
 public enum MyPageUrl {
 
-    MAIN_PAGE("http://alexanderbakhin.com/"),
-    SUPPORT_PAGE("http://support.alexanderbakhin.com/");
+    MAIN_PAGE_URL("http://alexanderbakhin.com/"),
+    SUPPORT_PAGE_URL("http://support.alexanderbakhin.com/");
 
-    private String page;
+    private String pageUrl;
 
-    MyPageUrl(final String page) {
-        this.page = page;
+    MyPageUrl(final String pageUrl) {
+        this.pageUrl = pageUrl;
     }
-
 }
