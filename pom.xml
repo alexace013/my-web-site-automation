@@ -191,7 +191,8 @@
                 <version>2.21.0</version>
                 <configuration>
                     <includes>
-                        <include>**/*Runner.java</include>
+                        <!--<include>**/*Runner.java</include>-->
+                        <include>**/*RestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
