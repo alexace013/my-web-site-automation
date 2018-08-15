@@ -16,6 +16,7 @@
         <info.cukes.version>1.2.5</info.cukes.version>
         <org.seleniumhq.selenium.version>3.12.0</org.seleniumhq.selenium.version>
     </properties>
+    <packaging>jar</packaging>
 
     <dependencies>
 
