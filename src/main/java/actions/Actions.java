@@ -3,6 +3,7 @@ package actions;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertyController;
 
@@ -45,7 +46,8 @@ public class Actions {
     }
 
     public void clickOnElement(final String xpath) {
-        getWebElement(xpath).click();
+        scrollToElementBy(xpath);
+        driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
     }
 
     public String getCurrentUrl() {
@@ -59,5 +61,13 @@ public class Actions {
                 .equals("complete");
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(condition);
+    }
+
+    public void scrollToElementBy(String elementLocator) {
+        WebElement element = driver.findElement(By.xpath(elementLocator));
+        int elementCoordinateY = element.getLocation().getY();
+        log.info(String.format("scroll to element coordinate to Y: %s", elementCoordinateY));
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("window.scrollBy(0," + elementCoordinateY + ")", "");
     }
 }

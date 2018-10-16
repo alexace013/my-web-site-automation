@@ -13,9 +13,7 @@ import java.io.IOException;
 @Log4j
 public class WebDriverInstance {
 
-    private static final String BROWSER_NAME = PropertyController.loadProperty("browser.name");
     private static final String BROWSER_PATH_UNIX = PropertyController.loadProperty("chromedriver.path.unix");
-    private static final String BROWSER_PATH_UNIX_TEST = PropertyController.loadProperty("chromedriver.path.unix_test");
     private static final String BROWSER_PATH_WINDOWS = PropertyController.loadProperty("chromedriver.path.windows");
 
     public static WebDriver driver;
@@ -25,8 +23,7 @@ public class WebDriverInstance {
 
     public static WebDriver initWebDriver() {
         DesiredCapabilities desiredCapabilities;
-//        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + getChromeDriverPath());
-        System.setProperty("webdriver.chrome.driver", BROWSER_PATH_UNIX_TEST);
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + getChromeDriverPath());
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("disable-infobars");
@@ -35,7 +32,7 @@ public class WebDriverInstance {
         chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
-//        driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;
     }
