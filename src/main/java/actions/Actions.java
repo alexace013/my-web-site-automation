@@ -3,6 +3,7 @@ package actions;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertyController;
 
@@ -11,15 +12,14 @@ import java.util.List;
 @Log4j
 public class Actions {
 
-    private static final String WAIT_20_SEC = "wait.timeout.20sec";
+    private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
 
     private WebDriver driver;
     private WebDriverWait driverWait;
 
     public Actions(WebDriver driver) {
         this.driver = driver;
-        driverWait = new WebDriverWait(driver, Integer.parseInt(
-                PropertyController.loadProperty(WAIT_20_SEC)));
+        driverWait = new WebDriverWait(driver, Integer.parseInt(WAIT_30_SEC));
     }
 
     public void openPage(final String url) {
@@ -45,10 +45,12 @@ public class Actions {
     }
 
     public void clickOnElement(final String xpath) {
-        getWebElement(xpath).click();
+        scrollToElementBy(xpath);
+        driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
     }
 
     public String getCurrentUrl() {
+        waitForPageLoaded();
         return driver.getCurrentUrl();
     }
 
@@ -57,7 +59,15 @@ public class Actions {
                 .executeScript("return document.readyState")
                 .toString()
                 .equals("complete");
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(WAIT_30_SEC));
         wait.until(condition);
+    }
+
+    public void scrollToElementBy(String elementLocator) {
+        WebElement element = driver.findElement(By.xpath(elementLocator));
+        int elementCoordinateY = element.getLocation().getY();
+        log.info(String.format("scroll to element coordinate to Y: %s", elementCoordinateY));
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("window.scrollBy(0," + elementCoordinateY + ")", "");
     }
 }

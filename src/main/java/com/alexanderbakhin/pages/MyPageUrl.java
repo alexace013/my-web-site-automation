@@ -1,12 +1,13 @@
 package com.alexanderbakhin.pages;
 
 import lombok.Getter;
+import utils.PropertyController;
 
 @Getter
 public enum MyPageUrl {
 
-    MAIN_PAGE_URL("http://alexanderbakhin.com/"),
-    SUPPORT_PAGE_URL("http://support.alexanderbakhin.com/");
+    MAIN_PAGE_URL(PropertyController.loadProperty("main.page.url")),
+    SUPPORT_PAGE_URL(PropertyController.loadProperty("support.page.url"));
 
     private String pageUrl;
 

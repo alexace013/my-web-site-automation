@@ -16,11 +16,15 @@ public class Fixture {
     public static WebDriver driver;
     public static MyWebSite myWebSite;
 
-    private static final String IMP_WAIT = PropertyController.loadProperty("wait.timeout.10sec");
+    private static final String IMP_WAIT = PropertyController.loadProperty("wait.timeout.30sec");
+    private static final String WEB_DRIVER_HEADLESS_STATUS = PropertyController.loadProperty("chromedriver.headless");
+    private static final String BROWSER_NAME = PropertyController.loadProperty("browser.name");
 
     @BeforeClass
     public static void setUp() {
-        driver = WebDriverInstance.initWebDriver();
+        log.info(String.format("WEB_DRIVER <%s> is HEADLESS: <%b>",
+                BROWSER_NAME, Boolean.parseBoolean(WEB_DRIVER_HEADLESS_STATUS)));
+        driver = WebDriverInstance.initWebDriver(Boolean.parseBoolean(WEB_DRIVER_HEADLESS_STATUS));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(IMP_WAIT), TimeUnit.SECONDS);
         myWebSite = new MyWebSite(driver);
         log.info("Start Test Suite execution");
