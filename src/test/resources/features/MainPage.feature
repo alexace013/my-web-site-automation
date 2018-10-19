@@ -14,16 +14,3 @@ Feature: Main Page tests
     Examples:
       | google drive resume url                                                |
       | https://drive.google.com/file/d/1SZAIO2978XL0arryh19Wumsag7W0eD1_/view |
-
-  @ignore
-  Scenario: 0005 - check message fields with validation
-    When user input into field <field> next text <text>
-    And user clicks on SEND button
-    Then form was send successful <status>
-      | field   |
-      | name    |
-      | email   |
-      | country |
-      | city    |
-      | phone   |
-      | message |
