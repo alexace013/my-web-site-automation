@@ -21,7 +21,7 @@ public class WebDriverInstance {
     public WebDriverInstance() {
     }
 
-    public static WebDriver initWebDriver() {
+    public static WebDriver initWebDriver(final boolean isWebDriverHeadless) {
         DesiredCapabilities desiredCapabilities;
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + getChromeDriverPath());
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -31,6 +31,10 @@ public class WebDriverInstance {
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-sandbox");
+        if (isWebDriverHeadless) {
+            chromeOptions.addArguments("headless");
+            chromeOptions.addArguments("window-size=1920x1080");
+        }
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();

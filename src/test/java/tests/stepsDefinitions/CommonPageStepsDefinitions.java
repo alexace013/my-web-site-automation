@@ -8,9 +8,6 @@ import org.junit.Assert;
 import tests.Fixture;
 import utils.UrlController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Log4j
 public class CommonPageStepsDefinitions extends Fixture {
 
@@ -30,10 +27,14 @@ public class CommonPageStepsDefinitions extends Fixture {
 
     @And("^user is switched in new tab to (.*) url$")
     public void userNavigatedToPageUrl(final String expectedPageUrl) {
-        List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(browserTabs.get(1));
-        log.info("URL: " + driver.getCurrentUrl());
-        String actualPageUrl = driver.getCurrentUrl();
-        Assert.assertEquals("Was opened incorrectly page", expectedPageUrl, UrlController.getUrlFromNewTab(driver, 2));
+        String windowHandle = driver.getWindowHandle();
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle);
+        }
+        log.debug("URL: " + driver.getCurrentUrl());
+        String actualPageUrl = UrlController.getUrlFromNewTab(driver, 2);
+        Assert.assertEquals("Was opened incorrectly page", expectedPageUrl, actualPageUrl);
+        driver.close();
+        driver.switchTo().window(windowHandle);
     }
 }

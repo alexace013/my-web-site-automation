@@ -12,15 +12,14 @@ import java.util.List;
 @Log4j
 public class Actions {
 
-    private static final String WAIT_20_SEC = "wait.timeout.20sec";
+    private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
 
     private WebDriver driver;
     private WebDriverWait driverWait;
 
     public Actions(WebDriver driver) {
         this.driver = driver;
-        driverWait = new WebDriverWait(driver, Integer.parseInt(
-                PropertyController.loadProperty(WAIT_20_SEC)));
+        driverWait = new WebDriverWait(driver, Integer.parseInt(WAIT_30_SEC));
     }
 
     public void openPage(final String url) {
@@ -51,6 +50,7 @@ public class Actions {
     }
 
     public String getCurrentUrl() {
+        waitForPageLoaded();
         return driver.getCurrentUrl();
     }
 
@@ -59,7 +59,7 @@ public class Actions {
                 .executeScript("return document.readyState")
                 .toString()
                 .equals("complete");
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(WAIT_30_SEC));
         wait.until(condition);
     }
 
