@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import utils.PropertyController;
+import controller.PropertyController;
 
 @Log4j
 @DisplayName("PROPERTY CONTROLLER TESTS")

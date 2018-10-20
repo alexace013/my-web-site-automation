@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
 import tests.Fixture;
-import utils.UrlController;
+import utils.UrlUtil;
 
 @Log4j
 public class CommonPageStepsDefinitions extends Fixture {
@@ -32,7 +32,7 @@ public class CommonPageStepsDefinitions extends Fixture {
             driver.switchTo().window(winHandle);
         }
         log.debug("URL: " + driver.getCurrentUrl());
-        String actualPageUrl = UrlController.getUrlFromNewTab(driver, 2);
+        String actualPageUrl = UrlUtil.getUrlFromNewTab(driver, 2);
         Assert.assertEquals("Was opened incorrectly page", expectedPageUrl, actualPageUrl);
         driver.close();
         driver.switchTo().window(windowHandle);

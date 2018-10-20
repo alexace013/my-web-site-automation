@@ -1,7 +1,7 @@
 package com.alexanderbakhin.pages;
 
 import lombok.Getter;
-import utils.PropertyController;
+import controller.PropertyController;
 
 @Getter
 public enum MyPageUrl {

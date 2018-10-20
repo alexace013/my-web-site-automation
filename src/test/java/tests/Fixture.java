@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import utils.PropertyController;
+import controller.PropertyController;
 
 import java.util.concurrent.TimeUnit;
 

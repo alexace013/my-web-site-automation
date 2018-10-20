@@ -1,6 +1,7 @@
-package utils;
+package controller;
 
 import lombok.extern.log4j.Log4j;
+import utils.FilesUtil;
 
 import java.io.IOException;
 import java.util.Map;
@@ -12,6 +13,8 @@ public class PropertyController {
     private static final String[] PROPERTIES_FILES =
             {
                     "/common.properties",
+                    "/chromedriver.properties",
+                    "/site.properties",
                     "/test.properties"
             };
     private static Map propertiesMapping;
@@ -35,4 +38,17 @@ public class PropertyController {
         return String.valueOf(propertiesMapping.get(propertyName));
     }
 
+    public enum PropertyType {
+        TST(".tst"),
+        PROP(".properties");
+        private String property;
+
+        PropertyType(final String property) {
+            this.property = property;
+        }
+
+        public String getProperty() {
+            return property;
+        }
+    }
 }

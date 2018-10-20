@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j
-public class UrlController {
+public class UrlUtil {
 
     public static String getUrlFromNewTab(final WebDriver driver, final int tabNumber) {
         List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());

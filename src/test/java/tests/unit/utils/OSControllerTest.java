@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.OSController;
+import controller.OSController;
 
 import java.io.IOException;
 
