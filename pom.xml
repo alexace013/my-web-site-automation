@@ -197,7 +197,7 @@
                 <configuration>
                     <includes>
                         <!--<include>**/*Runner.java</include>-->
-                        <include>**/*RestRunner.java</include>
+                        <include>**/*TestsRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
