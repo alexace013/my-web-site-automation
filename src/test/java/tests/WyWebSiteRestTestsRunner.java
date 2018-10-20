@@ -12,5 +12,5 @@ import org.junit.runner.RunWith;
         glue = {"tests/stepsDefinitions"},
         tags = {"@Rest"}
 )
-public class WyWebSiteTestsRestRunner {
+public class WyWebSiteRestTestsRunner {
 }
