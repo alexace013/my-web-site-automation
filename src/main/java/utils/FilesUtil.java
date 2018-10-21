@@ -5,7 +5,6 @@ import static utils.FilesUtil.ResourcesFolder.TEST;
 import static controller.PropertyController.PropertyType.PROP;
 import static controller.PropertyController.PropertyType.TST;
 
-import com.sun.istack.internal.NotNull;
 import lombok.extern.log4j.Log4j;
 
 import java.io.File;
@@ -29,7 +28,6 @@ public class FilesUtil {
      * @param directoryPath   another directory path i project structure
      * @return array Strings with resources folderName filenames
      */
-    @NotNull
     private static String[] getResourcesFolderFilenamesByTypeOfFiles(
             final String resourcesFolder,
             final String typeOfFiles,
