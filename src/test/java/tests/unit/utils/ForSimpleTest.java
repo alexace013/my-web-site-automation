@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Log4j
-public class ForSimpleTests {
+public class ForSimpleTest {
 
     @Test
     @DisplayName("get user directory test")
