@@ -13,6 +13,7 @@ import java.util.List;
 public class Actions {
 
     private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
+    private static final String JS_WAIT_SCRIPT = "window.scrollBy(0,%d)";
 
     private WebDriver driver;
     private WebDriverWait driverWait;
@@ -44,9 +45,17 @@ public class Actions {
         return driver.findElements(By.xpath(xpathToElement));
     }
 
-    public void clickOnElement(final String xpath) {
-        scrollToElementBy(xpath);
-        driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+    public void clickOnElement(final String xpathToElement) {
+        scrollToElementBy(xpathToElement);
+        driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathToElement))).click();
+    }
+
+    public void inputData(final String xpathToElement, final String data) {
+        final WebElement inputElement = driverWait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath(xpathToElement)));
+        scrollToElement(inputElement);
+        log.debug(String.format("input data : [%s]", data));
+        inputElement.sendKeys(data);
     }
 
     public String getCurrentUrl() {
@@ -59,15 +68,41 @@ public class Actions {
                 .executeScript("return document.readyState")
                 .toString()
                 .equals("complete");
-        WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(WAIT_30_SEC));
-        wait.until(condition);
+        driverWait.until(condition);
     }
 
-    public void scrollToElementBy(String elementLocator) {
-        WebElement element = driver.findElement(By.xpath(elementLocator));
+    public void scrollToElementBy(final String elementLocator) {
+        WebElement element = getWebElement(elementLocator);
+        scrollToElement(element);
+    }
+
+    public void scrollToElement(final WebElement element) {
         int elementCoordinateY = element.getLocation().getY();
-        log.info(String.format("scroll to element coordinate to Y: %s", elementCoordinateY));
+        log.info(String.format("scroll to element coordinate to Y: %d", elementCoordinateY));
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("window.scrollBy(0," + elementCoordinateY + ")", "");
+        javascriptExecutor.executeScript(String.format(JS_WAIT_SCRIPT, elementCoordinateY));
+    }
+
+    /**
+     * This method is used to get text from pop-up windows
+     *
+     * @return alert text
+     * @throws NoAlertPresentException If alert is not found on page
+     */
+    public String waitAndGetAlertText() {
+        String alertText;
+        try {
+            driverWait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            alertText = alert.getText();
+            log.info(String.format("alert text < %s >", alertText));
+            alert.accept();
+            log.debug("alert closed");
+        } catch (NoAlertPresentException e) {
+            alertText = "alert is not found";
+            log.error(String.format("< %s > . NoAlertPresentException < %s >", alertText, e.getMessage()));
+            e.printStackTrace();
+        }
+        return alertText;
     }
 }

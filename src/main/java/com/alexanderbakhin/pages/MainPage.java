@@ -1,14 +1,65 @@
 package com.alexanderbakhin.pages;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage extends AbstractPage {
 
     private static final String DOWNLOAD_RESUME_BUTTON = ".//a[@title='google_drive_resume_link_en']";
-
+    private static final String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
+    private static final String MESSAGE_TEXTAREA = ".//input[@value='Message']/following-sibling::textarea";
+    private static final String SEND_BUTTON = ".//button[text()='Send']";
 
     public MainPage(WebDriver driver) {
         super(driver);
+    }
+
+    @AllArgsConstructor
+    @Getter
+    protected enum MessagePanel {
+        NAME("Name"),
+        E_MAIL("E-mail"),
+        COUNTRY("Country"),
+        CITY("City"),
+        PHONE("Phone");
+        private String field;
+    }
+
+    public void inputDataIntoMessageTextarea(final String data) {
+        webElementsActions.inputData(MESSAGE_TEXTAREA, data);
+    }
+
+    public void inputDataIntoNameField(final String data) {
+        inputDataIntoField(MessagePanel.NAME, data);
+    }
+
+    public void inputDataIntoEmailField(final String data) {
+        inputDataIntoField(MessagePanel.E_MAIL, data);
+    }
+
+    public void inputDataIntoCountryField(final String data) {
+        inputDataIntoField(MessagePanel.COUNTRY, data);
+    }
+
+    public void inputDataIntoCityField(final String data) {
+        inputDataIntoField(MessagePanel.CITY, data);
+    }
+
+    public void inputDataIntoPhoneField(final String data) {
+        inputDataIntoField(MessagePanel.PHONE, data);
+    }
+
+    public void clickOnSendButton() {
+        webElementsActions.clickOnElement(SEND_BUTTON);
+    }
+
+    private void inputDataIntoField(final MessagePanel fieldValue, final String data) {
+        webElementsActions.inputData(String.format(INPUT_FIELDS, fieldValue.getField()), data);
+    }
+
+    public boolean isMessageTextEquals(final String text) {
+        return webElementsActions.waitAndGetAlertText().equals(text);
     }
 
     public void clickOnDownloadResumeButton() {
