@@ -198,8 +198,6 @@
                 <version>2.21.0</version>
                 <configuration>
                     <includes>
-                        <!--<include>**/*Runner.java</include>-->
-                        <include>**/*Test</include>
                         <include>**/*TestsRunner.java</include>
                     </includes>
                 </configuration>

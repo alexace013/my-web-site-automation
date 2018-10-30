@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
 import utils.FilesUtil;
 
@@ -11,9 +13,11 @@ import java.util.Arrays;
 
 @Log4j
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(JUnit4.class)
 public class FileUtilTest {
 
     @Test
+    @org.junit.Test
     public void testMainResourcesFolderFilenames() {
         SoftAssertions softly = new SoftAssertions();
         String[] actualFilenames = FilesUtil.getMainResourcesFolderPropertiesFilenames();
@@ -23,6 +27,7 @@ public class FileUtilTest {
     }
 
     @Test
+    @org.junit.Test
     public void testTestResourcesFolderFilenames() {
         SoftAssertions softly = new SoftAssertions();
         String[] actualFilenames = FilesUtil.getTestResourcesFolderPropertiesFilenames();
