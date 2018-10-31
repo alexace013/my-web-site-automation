@@ -7,12 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import controller.PropertyController;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 @Log4j
 @DisplayName("PROPERTY CONTROLLER TESTS")
-@RunWith(JUnit4.class)
 public class PropertyControllerTest {
 
     private static final String TEST_PROP_NAME = "test.prop.name";

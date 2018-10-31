@@ -5,13 +5,10 @@ import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import controller.OSController;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import java.io.IOException;
 
 @Log4j
-@RunWith(JUnit4.class)
 public class OSControllerTest {
 
     private static final String WINDOWS_TEXT = "windows";

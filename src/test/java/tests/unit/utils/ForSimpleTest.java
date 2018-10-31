@@ -4,11 +4,8 @@ import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 @Log4j
-@RunWith(JUnit4.class)
 public class ForSimpleTest {
 
     @Test
