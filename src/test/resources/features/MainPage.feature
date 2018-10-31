@@ -18,6 +18,7 @@ Feature: Main Page tests
       | google drive resume url                                                |
       | https://drive.google.com/file/d/1SZAIO2978XL0arryh19Wumsag7W0eD1_/view |
 
+  @ignore
   Scenario: 0005 - send test message from main page
     When user inputs "TestName" data in name field
     And user inputs "test@mail.com" data in e-mail field
@@ -27,3 +28,6 @@ Feature: Main Page tests
     And user inputs "Test Message Text" data in message textarea
     And user clicks on SEND button
     Then form was sent successfully with alert "Message was sent. Thanks!" text
+
+  Scenario: 0006 - check bottom links
+    Then user checks urls from bottom links

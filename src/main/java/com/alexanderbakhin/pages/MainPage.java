@@ -10,6 +10,7 @@ public class MainPage extends AbstractPage {
     private static final String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
     private static final String MESSAGE_TEXTAREA = ".//input[@value='Message']/following-sibling::textarea";
     private static final String SEND_BUTTON = ".//button[text()='Send']";
+    private static final String BOTTOM_LINKS = ".//a[@title='%s']";
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -24,6 +25,18 @@ public class MainPage extends AbstractPage {
         CITY("City"),
         PHONE("Phone");
         private String field;
+    }
+
+    @AllArgsConstructor
+    @Getter
+    public enum BottomLinks {
+        FACEBOOK("facebook-link"),
+        LINKEDIN("linkedin-link"),
+        INSTAGRAM("instagram-link"),
+        YOUTUBE("youtube-link"),
+        GOOGLE_PLUS("google-plus-link");
+        // attribute title
+        private String attrTitle;
     }
 
     public void inputDataIntoMessageTextarea(final String data) {
@@ -68,5 +81,11 @@ public class MainPage extends AbstractPage {
 
     public boolean isMainPage() {
         return isPage(MyPageUrl.MAIN_PAGE_URL.getPageUrl());
+    }
+
+    public String getHrefFromBottomLink(final BottomLinks link) {
+        return webElementsActions.getWebElement(String
+                .format(BOTTOM_LINKS, link.getAttrTitle()))
+                .getAttribute("href");
     }
 }
