@@ -31,6 +31,18 @@ jobs:
           - v1-dependencies-
 
       - run: mvn dependency:go-offline
+      
+      - run:
+          name: Install latest version of ChromeDriver Sample
+          command: |
+            sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo apt-get update
+            sudo apt-get install google-chrome-stable
+            
+      - run:
+          name: Running X virtual framebuffer
+          command: Xvfb :0 -ac &
 
       - save_cache:
           paths:
@@ -39,3 +51,9 @@ jobs:
         
       # run tests!
       - run: mvn clean test
+
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: tr1
+      - store_test_results:
+          path: target/surefire-reports
