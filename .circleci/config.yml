@@ -52,7 +52,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
       # run tests!
-      - run: mvn test
+      - run: mvn clean install test
 
       - store_artifacts:
           path: target/surefire-reports
