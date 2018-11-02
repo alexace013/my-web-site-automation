@@ -203,25 +203,25 @@
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>net.masterthought</groupId>-->
-                <!--<artifactId>maven-cucumber-reporting</artifactId>-->
-                <!--<version>3.16.0</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>execution</id>-->
-                        <!--<phase>test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<projectName>my-web-site-automation</projectName>-->
-                            <!--<outputDirectory>${project.build.directory}/report/cucumber-report</outputDirectory>-->
-                            <!--<cucumberOutput>${project.build.directory}/report/cucumber-report.json</cucumberOutput>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>3.16.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>my-web-site-automation</projectName>
+                            <outputDirectory>${project.build.directory}/report/cucumber-report</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/report/cucumber-report.json</cucumberOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
