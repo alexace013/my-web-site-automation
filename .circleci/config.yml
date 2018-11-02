@@ -39,6 +39,7 @@ jobs:
             sudo sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             sudo apt-get update
             sudo apt-get install google-chrome-stable
+            chmod -R 777 .
             
       - run:
           name: Running X virtual framebuffer
@@ -51,3 +52,9 @@ jobs:
         
       # run tests!
       - run: mvn clean verify test
+
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: tr1
+      - store_test_results:
+          path: target/surefire-reports
