@@ -22,16 +22,6 @@ jobs:
     
     steps:
       - checkout
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/cucumber-report
-            bundle exec cucumber pretty --format json --out ~/cucumber-report/tests.cucumber
-          when: always
-      - store_test_results:
-          path: ~/cucumber-report
-      - store_artifacts:
-          path: ~/cucumber-report
 
       # Download and cache dependencies
       - restore_cache:
