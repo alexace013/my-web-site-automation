@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utils.OSController;
-import utils.PropertyController;
+import controller.OSController;
+import controller.PropertyController;
 
 import java.io.IOException;
 

@@ -1,17 +1,20 @@
 package com.alexanderbakhin.pages;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import utils.PropertyController;
+import controller.PropertyController;
 
+@AllArgsConstructor
 @Getter
 public enum MyPageUrl {
 
     MAIN_PAGE_URL(PropertyController.loadProperty("main.page.url")),
-    SUPPORT_PAGE_URL(PropertyController.loadProperty("support.page.url"));
+    SUPPORT_PAGE_URL(PropertyController.loadProperty("support.page.url")),
+    FACEBOOK_LINK_URL(PropertyController.loadProperty("facebook.link.url")),
+    LINKEDIN_LINK_URL(PropertyController.loadProperty("linkedin.link.url")),
+    INSTAGRAM_LINK_URL(PropertyController.loadProperty("instagram.link.url")),
+    YOUTUBE_LINK_URL(PropertyController.loadProperty("youtube.link.url")),
+    GOOGLE_PLUS_LINK_URL(PropertyController.loadProperty("google.plus.link.url"));
 
     private String pageUrl;
-
-    MyPageUrl(final String pageUrl) {
-        this.pageUrl = pageUrl;
-    }
 }

@@ -6,10 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Log4j
-public class ForSimpleTests {
+public class ForSimpleTest {
 
     @Test
     @DisplayName("get user directory test")
+    @org.junit.Test
     public void getUserDirectory() {
         String userDir = System.getProperty("user.dir");
         log.info(String.format("user directory: %s", userDir));

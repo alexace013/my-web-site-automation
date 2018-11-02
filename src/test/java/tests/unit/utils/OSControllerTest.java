@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.OSController;
+import controller.OSController;
 
 import java.io.IOException;
 
@@ -20,6 +20,7 @@ public class OSControllerTest {
 
     @Test
     @DisplayName("Test_00-05: Check OS")
+    @org.junit.Test
     public void checkOS() {
         if (OSController.isWindows()) {
             log.debug(String.format(DEBUG_MESSAGE, WINDOWS_TEXT));
