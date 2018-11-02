@@ -84,8 +84,7 @@ public class MainPage extends AbstractPage {
     }
 
     public String getHrefFromBottomLink(final BottomLinks link) {
-        return webElementsActions.getWebElement(String
-                .format(BOTTOM_LINKS, link.getAttrTitle()))
-                .getAttribute("href");
+        return webElementsActions.getAttributeTitleFromElement(
+                String.format(BOTTOM_LINKS, link.getAttrTitle()), "href");
     }
 }

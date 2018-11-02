@@ -13,7 +13,7 @@ import java.util.List;
 public class Actions {
 
     private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
-    private static final String JS_WAIT_SCRIPT = "window.scrollBy(0,%d)";
+    private static final String WINDOW_SCROLL_JS_SCRIPT = "window.scrollBy(0,%d)";
 
     private WebDriver driver;
     private WebDriverWait driverWait;
@@ -80,7 +80,7 @@ public class Actions {
         int elementCoordinateY = element.getLocation().getY();
         log.info(String.format("scroll to element coordinate to Y: %d", elementCoordinateY));
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript(String.format(JS_WAIT_SCRIPT, elementCoordinateY));
+        javascriptExecutor.executeScript(String.format(WINDOW_SCROLL_JS_SCRIPT, elementCoordinateY));
     }
 
     /**
@@ -104,5 +104,9 @@ public class Actions {
             e.printStackTrace();
         }
         return alertText;
+    }
+
+    public String getAttributeTitleFromElement(final String xpathToElement, final String attribute) {
+        return  getWebElement(xpathToElement).getAttribute(attribute);
     }
 }
