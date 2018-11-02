@@ -200,6 +200,7 @@
                         <include>**/*TestsRunner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>
             <!--<plugin>-->
