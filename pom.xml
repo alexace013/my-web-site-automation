@@ -14,7 +14,7 @@
         <org.junit.version>5.2.0</org.junit.version>
         <org.junit.platform.version>1.2.0</org.junit.platform.version>
         <info.cukes.version>1.2.5</info.cukes.version>
-        <org.seleniumhq.selenium.version>3.12.0</org.seleniumhq.selenium.version>
+        <org.seleniumhq.selenium.version>3.141.59</org.seleniumhq.selenium.version>
         <chromedriver.headless>true</chromedriver.headless>
         <browser.name>chrome</browser.name>
     </properties>
