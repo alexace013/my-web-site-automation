@@ -20,6 +20,27 @@
     </properties>
     <!--<packaging>jar</packaging>-->
 
+    <profiles>
+        <profile>
+            <id>local ui</id>
+            <properties>
+                <chromedriver.headless>true</chromedriver.headless>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <chromedriver.headless>false</chromedriver.headless>
+            </properties>
+        </profile>
+        <profile>
+            <id>circle ci</id>
+            <properties>
+                <chromedriver.headless>false</chromedriver.headless>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
 
         <dependency>
