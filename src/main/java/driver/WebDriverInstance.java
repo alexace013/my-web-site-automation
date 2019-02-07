@@ -15,6 +15,7 @@ public class WebDriverInstance {
 
     private static final String BROWSER_PATH_UNIX = PropertyController.loadProperty("chromedriver.path.unix");
     private static final String BROWSER_PATH_WINDOWS = PropertyController.loadProperty("chromedriver.path.windows");
+    private static final String BROWSER_PATH_MAC = PropertyController.loadProperty("chromedriver.path.mac");
 
     public static WebDriver driver;
 
@@ -46,6 +47,8 @@ public class WebDriverInstance {
             return BROWSER_PATH_UNIX;
         } else if (OSController.isWindows()) {
             return BROWSER_PATH_WINDOWS;
+        } else if (OSController.isMac()) {
+            return BROWSER_PATH_MAC;
         } else {
             try {
                 throw new IOException();
