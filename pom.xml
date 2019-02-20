@@ -191,6 +191,12 @@
         <!--<scope>test</scope>-->
         <!--</dependency>-->
 
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <build>

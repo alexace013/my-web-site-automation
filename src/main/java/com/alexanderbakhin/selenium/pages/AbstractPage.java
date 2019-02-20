@@ -1,4 +1,4 @@
-package com.alexanderbakhin.pages;
+package com.alexanderbakhin.selenium.pages;
 
 import actions.Actions;
 import lombok.extern.log4j.Log4j;

@@ -1,4 +1,4 @@
-package com.alexanderbakhin.pages;
+package com.alexanderbakhin.site;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,10 @@
-package tests.stepsDefinitions;
+package tests.stepsDefinitions.selenium;
 
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
-import tests.Fixture;
+import tests.fixtures.SeleniumFixture;
 
-public class SupportPageStepsDefinitions extends Fixture {
+public class SupportPageStepsDefinitions extends SeleniumFixture {
 
     @Then("^Recheck support page url$")
     public void recheckSupportPageUrl() {

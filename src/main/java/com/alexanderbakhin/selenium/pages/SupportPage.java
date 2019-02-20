@@ -1,5 +1,6 @@
-package com.alexanderbakhin.pages;
+package com.alexanderbakhin.selenium.pages;
 
+import com.alexanderbakhin.site.MyPageUrl;
 import org.openqa.selenium.WebDriver;
 
 public class SupportPage extends AbstractPage {

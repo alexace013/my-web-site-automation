@@ -1,16 +1,17 @@
-package com.alexanderbakhin.pages;
+package com.alexanderbakhin.selenium.pages;
 
+import com.alexanderbakhin.site.MyPageUrl;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage extends AbstractPage {
 
-    private static final String DOWNLOAD_RESUME_BUTTON = ".//a[@title='google_drive_resume_link_en']";
-    private static final String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
-    private static final String MESSAGE_TEXTAREA = ".//input[@value='Message']/following-sibling::textarea";
-    private static final String SEND_BUTTON = ".//button[text()='Send']";
-    private static final String BOTTOM_LINKS = ".//a[@title='%s']";
+    public static final String DOWNLOAD_RESUME_BUTTON = ".//a[@title='google_drive_resume_link_en']";
+    public static final String SEND_BUTTON = ".//button[text()='Send']";
+    public static final String MESSAGE_TEXT_AREA = ".//input[@value='Message']/following-sibling::textarea";
+    public static final String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
+    public static final String BOTTOM_LINKS = ".//a[@title='%s']";
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -40,7 +41,7 @@ public class MainPage extends AbstractPage {
     }
 
     public void inputDataIntoMessageTextarea(final String data) {
-        webElementsActions.inputData(MESSAGE_TEXTAREA, data);
+        webElementsActions.inputData(MESSAGE_TEXT_AREA, data);
     }
 
     public void inputDataIntoNameField(final String data) {

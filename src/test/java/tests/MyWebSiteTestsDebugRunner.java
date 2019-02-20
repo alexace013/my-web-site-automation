@@ -3,6 +3,7 @@ package tests;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
+import tests.fixtures.SeleniumFixture;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -12,5 +13,5 @@ import org.junit.runner.RunWith;
         glue = {"tests/stepsDefinitions"},
         tags = {"@Debug", "~@ignore"}
 )
-public class MyWebSiteTestsDebugRunner extends Fixture {
+public class MyWebSiteTestsDebugRunner extends SeleniumFixture {
 }

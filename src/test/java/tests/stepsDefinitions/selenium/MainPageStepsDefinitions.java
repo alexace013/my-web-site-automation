@@ -1,18 +1,18 @@
-package tests.stepsDefinitions;
+package tests.stepsDefinitions.selenium;
 
-import com.alexanderbakhin.pages.MainPage;
-import com.alexanderbakhin.pages.MyPageUrl;
+import com.alexanderbakhin.selenium.pages.MainPage;
+import com.alexanderbakhin.site.MyPageUrl;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
-import tests.Fixture;
+import tests.fixtures.SeleniumFixture;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPageStepsDefinitions extends Fixture {
+public class MainPageStepsDefinitions extends SeleniumFixture {
 
     @When("^user inputs \"([^\"]*)\" data in name field$")
     public void userInputsDataInNameField(final String data) {

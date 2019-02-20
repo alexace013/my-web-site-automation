@@ -1,4 +1,4 @@
-package tests.stepsDefinitions;
+package tests.stepsDefinitions.restAssured;
 
 import com.jayway.restassured.RestAssured;
 import cucumber.api.java.en.Then;

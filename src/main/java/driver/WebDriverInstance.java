@@ -1,5 +1,6 @@
 package driver;
 
+import com.codeborne.selenide.Configuration;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -40,6 +41,14 @@ public class WebDriverInstance {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;
+    }
+
+    public static void initSelenideChromeWebDriver() {
+        final String chrome = "chrome";
+        log.info(String.format("\n--- SELENIDE INSTANCE ---\nBROWSER: %s", chrome));
+        Configuration.timeout = Long.parseLong(PropertyController.loadProperty("selenide.wait.timeout.30sec"));
+        System.setProperty(String.format("webdriver.%s.driver", chrome), getChromeDriverPath());
+        Configuration.browser = chrome;
     }
 
     private static String getChromeDriverPath() {

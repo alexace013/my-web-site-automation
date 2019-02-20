@@ -1,4 +1,4 @@
-package tests;
+package tests.fixtures;
 
 import com.alexanderbakhin.site.MyWebSite;
 import driver.WebDriverInstance;
@@ -11,7 +11,7 @@ import controller.PropertyController;
 import java.util.concurrent.TimeUnit;
 
 @Log4j
-public class Fixture {
+public class SeleniumFixture {
 
     public static WebDriver driver;
     public static MyWebSite myWebSite;
