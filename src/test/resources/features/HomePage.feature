@@ -2,13 +2,13 @@
 @Debug
 Feature: Main Page tests
 
-  Background: open main page
+  Background: open home page
     Given user opens http://alexanderbakhin.com/ page
 
   @ignore
-  Scenario: 0001 - navigates to main page
+  Scenario: 0001 - navigates to home page
     Then user is navigated to http://alexanderbakhin.com/ page
-    And Recheck main page url
+    And Recheck home page url
 
   @ignore
   Scenario Outline: 0004 - check 'download resume' button link
@@ -19,7 +19,7 @@ Feature: Main Page tests
       | https://drive.google.com/file/d/1SZAIO2978XL0arryh19Wumsag7W0eD1_/view |
 
   @ignore
-  Scenario: 0005 - send test message from main page
+  Scenario: 0005 - send test message from home page
     When user inputs "TestName" data in name field
     And user inputs "test@mail.com" data in e-mail field
     And user inputs "TestCountry" data in country field
