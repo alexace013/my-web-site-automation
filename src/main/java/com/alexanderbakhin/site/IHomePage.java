@@ -29,7 +29,9 @@ public interface IHomePage {
 
     void clickOnDownloadResumeButton();
 
-    boolean isMainPage();
+    void checkCopyrightText();
+
+    boolean isHomePage();
 
     @AllArgsConstructor
     @Getter

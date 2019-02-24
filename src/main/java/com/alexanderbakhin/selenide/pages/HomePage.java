@@ -55,8 +55,14 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     // TODO #2 need to implement method with Selenide
     @Override
-    public boolean isMainPage() {
+    public boolean isHomePage() {
         return false;
+    }
+
+    // TODO #4 implement method on Selenide level
+    @Override
+    public void checkCopyrightText() {
+
     }
 
     private void inputDataIntoField(final String fieldName, final String data) {

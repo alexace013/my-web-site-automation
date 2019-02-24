@@ -58,7 +58,7 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
     @Then("^Recheck home page url$")
     public void recheckHomePageUrl() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(myWebSite.homePage.isMainPage()).as("not main page");
+        softly.assertThat(myWebSite.homePage.isHomePage()).as("not home page");
         softly.assertAll();
     }
 

@@ -60,8 +60,14 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     @Override
-    public boolean isMainPage() {
-        return isPage(MyPageUrl.MAIN_PAGE_URL.getPageUrl());
+    public boolean isHomePage() {
+        return isPage(MyPageUrl.HOME_PAGE_URL.getPageUrl());
+    }
+
+    // TODO #3 implement method on Selenium level
+    @Override
+    public void checkCopyrightText() {
+
     }
 
     public String getHrefFromBottomLink(final BottomLinks link) {

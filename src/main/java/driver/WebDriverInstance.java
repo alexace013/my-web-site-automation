@@ -17,6 +17,9 @@ public class WebDriverInstance {
     private static final String BROWSER_PATH_UNIX = PropertyController.loadProperty("chromedriver.path.unix");
     private static final String BROWSER_PATH_WINDOWS = PropertyController.loadProperty("chromedriver.path.windows");
     private static final String BROWSER_PATH_MAC = PropertyController.loadProperty("chromedriver.path.mac");
+    private static final String CHROME_NAME = PropertyController.loadProperty("chrome.name");
+    private static final String SELENIDE_TIMEOUT = PropertyController.loadProperty("selenide.wait.timeout.30sec");
+    private static final String WEBDRIVER_CHROME_DRIVER = PropertyController.loadProperty("webdriver.chrome.driver");
 
     public static WebDriver driver;
 
@@ -25,7 +28,7 @@ public class WebDriverInstance {
 
     public static WebDriver initWebDriver(final boolean isWebDriverHeadless) {
         DesiredCapabilities desiredCapabilities;
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + getChromeDriverPath());
+        System.setProperty(WEBDRIVER_CHROME_DRIVER, System.getProperty("user.dir") + getChromeDriverPath());
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("disable-infobars");
@@ -44,11 +47,11 @@ public class WebDriverInstance {
     }
 
     public static void initSelenideChromeWebDriver() {
-        final String chrome = "chrome";
-        log.info(String.format("\n--- SELENIDE INSTANCE ---\nBROWSER: %s", chrome));
-        Configuration.timeout = Long.parseLong(PropertyController.loadProperty("selenide.wait.timeout.30sec"));
-        System.setProperty(String.format("webdriver.%s.driver", chrome), getChromeDriverPath());
-        Configuration.browser = chrome;
+        final String selenideInstanceMessage = "\n--- SELENIDE INSTANCE ---\nBROWSER: %s\n---\n";
+        log.info(String.format(selenideInstanceMessage, CHROME_NAME));
+        Configuration.timeout = Long.parseLong(SELENIDE_TIMEOUT);
+        System.setProperty(WEBDRIVER_CHROME_DRIVER, getChromeDriverPath());
+        Configuration.browser = CHROME_NAME;
     }
 
     private static String getChromeDriverPath() {
@@ -62,7 +65,7 @@ public class WebDriverInstance {
             try {
                 throw new IOException();
             } catch (IOException e) {
-                log.debug("not found chrome driver for unix or windows");
+                log.debug("not found chrome driver for unix, windows or mac os");
                 log.error(e);
             }
         }

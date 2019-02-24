@@ -8,7 +8,7 @@ import controller.PropertyController;
 @Getter
 public enum MyPageUrl {
 
-    MAIN_PAGE_URL(PropertyController.loadProperty("main.page.url")),
+    HOME_PAGE_URL(PropertyController.loadProperty("home.page.url")),
     SUPPORT_PAGE_URL(PropertyController.loadProperty("support.page.url")),
     FACEBOOK_LINK_URL(PropertyController.loadProperty("facebook.link.url")),
     LINKEDIN_LINK_URL(PropertyController.loadProperty("linkedin.link.url")),
