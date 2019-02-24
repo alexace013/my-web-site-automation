@@ -59,12 +59,6 @@ public class HomePage extends AbstractPage implements IHomePage {
         return false;
     }
 
-    // TODO #4 implement method on Selenide level
-    @Override
-    public void checkCopyrightText() {
-
-    }
-
     private void inputDataIntoField(final String fieldName, final String data) {
         $x(String.format(INPUT_FIELDS, fieldName)).shouldBe(Condition.visible).data(data);
     }

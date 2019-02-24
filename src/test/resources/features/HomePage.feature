@@ -1,6 +1,6 @@
-@MainPage
+@HomePage
 @Debug
-Feature: Main Page tests
+Feature: Home Page tests
 
   Background: open home page
     Given user opens http://alexanderbakhin.com/ page
@@ -31,3 +31,8 @@ Feature: Main Page tests
 
   Scenario: 0006 - check bottom links
     Then user checks urls from bottom links
+
+  Scenario: 0007 - check copyright text and date
+    Then user checks copyright text
+    And copyright date is a current year
+    And user checks copyright link

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends AbstractPage implements IHomePage {
 
+    private static final String HREF_ATTRIBUTE = "href";
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -64,14 +66,20 @@ public class HomePage extends AbstractPage implements IHomePage {
         return isPage(MyPageUrl.HOME_PAGE_URL.getPageUrl());
     }
 
-    // TODO #3 implement method on Selenium level
-    @Override
-    public void checkCopyrightText() {
+    public int getCopyrightYear() {
+        return Integer.parseInt(webElementsActions.getWebElement(COPYRIGHT_FULL_TEXT).getText().substring(2, 6));
+    }
 
+    public String getCopyrightText() {
+        return webElementsActions.getWebElement(COPYRIGHT_FULL_TEXT).getText();
+    }
+
+    public String getCopyrightLink() {
+        return webElementsActions.getAttributeTitleFromElement(COPYRIGHT_LINK, HREF_ATTRIBUTE);
     }
 
     public String getHrefFromBottomLink(final BottomLinks link) {
         return webElementsActions.getAttributeTitleFromElement(
-                String.format(BOTTOM_LINKS, link.getAttrTitle()), "href");
+                String.format(BOTTOM_LINKS, link.getAttrTitle()), HREF_ATTRIBUTE);
     }
 }

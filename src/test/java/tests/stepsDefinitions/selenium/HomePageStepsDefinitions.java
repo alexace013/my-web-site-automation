@@ -2,17 +2,22 @@ package tests.stepsDefinitions.selenium;
 
 import com.alexanderbakhin.selenium.pages.HomePage;
 import com.alexanderbakhin.site.MyPageUrl;
+import controller.PropertyController;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import tests.fixtures.SeleniumFixture;
+import utils.DateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomePageStepsDefinitions extends SeleniumFixture {
+
+    private static final String COPYRIGHT_SYMBOL = PropertyController.loadProperty("copyright.symbol");
+    private static final String COPYRIGHT_TEXT = PropertyController.loadProperty("copyright.text");
 
     @When("^user inputs \"([^\"]*)\" data in name field$")
     public void userInputsDataInNameField(final String data) {
@@ -82,5 +87,30 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.YOUTUBE));
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.GOOGLE_PLUS));
         Assert.assertTrue(actualUrls.equals(expectedUrls));
+    }
+
+    @Then("^user checks copyright text$")
+    public void userChecksCopyrightText() {
+        SoftAssertions softly = new SoftAssertions();
+        final String copyrightWebElementText = myWebSite.homePage.getCopyrightText();
+        softly.assertThat(copyrightWebElementText.substring(0, 1)).isEqualTo(COPYRIGHT_SYMBOL);
+        softly.assertThat(copyrightWebElementText.substring(7)).isEqualTo(COPYRIGHT_TEXT);
+        softly.assertAll();
+    }
+
+    @And("^copyright date is a current year$")
+    public void copyrightDateIsCurrentYear() {
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(myWebSite.homePage.getCopyrightYear())
+                .as("Copyright year is not actual current year")
+                .isEqualTo(DateUtil.getCurrentYear());
+        softly.assertAll();
+    }
+
+    @And("^user checks copyright link$")
+    public void userChecksCopyrightLink() {
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(myWebSite.homePage.getCopyrightLink()).isEqualTo(MyPageUrl.HOME_PAGE_URL.getPageUrl());
+        softly.assertAll();
     }
 }

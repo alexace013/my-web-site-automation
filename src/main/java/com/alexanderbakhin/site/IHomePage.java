@@ -10,6 +10,8 @@ public interface IHomePage {
     String MESSAGE_TEXT_AREA = ".//input[@value='Message']/following-sibling::textarea";
     String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
     String BOTTOM_LINKS = ".//a[@title='%s']";
+    String COPYRIGHT_FULL_TEXT = ".//p[@class='wb-stl-footer']";
+    String COPYRIGHT_LINK = ".//p[@class='wb-stl-footer']/a";
 
     void inputDataIntoMessageTextArea(final String data);
 
@@ -28,8 +30,6 @@ public interface IHomePage {
     boolean isMessageTextEquals(final String text);
 
     void clickOnDownloadResumeButton();
-
-    void checkCopyrightText();
 
     boolean isHomePage();
 
