@@ -16,8 +16,8 @@ import java.util.List;
 
 public class HomePageStepsDefinitions extends SeleniumFixture {
 
-    private static final String COPYRIGHT_SYMBOL = PropertyController.loadProperty("copyright.symbol");
-    private static final String COPYRIGHT_TEXT = PropertyController.loadProperty("copyright.text");
+    private static final String COPYRIGHT_SYMBOL = PropertyController.loadProperty("home.page.copyright.symbol");
+    private static final String COPYRIGHT_TEXT = PropertyController.loadProperty("home.page.copyright.text");
 
     @When("^user inputs \"([^\"]*)\" data in name field$")
     public void userInputsDataInNameField(final String data) {
@@ -60,7 +60,7 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
         myWebSite.homePage.clickOnDownloadResumeButton();
     }
 
-    @Then("^Recheck home page url$")
+    @Then("^recheck home page url$")
     public void recheckHomePageUrl() {
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(myWebSite.homePage.isHomePage()).as("not home page");

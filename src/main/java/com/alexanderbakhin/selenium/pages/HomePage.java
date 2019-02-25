@@ -67,11 +67,11 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     public int getCopyrightYear() {
-        return Integer.parseInt(webElementsActions.getWebElement(COPYRIGHT_FULL_TEXT).getText().substring(2, 6));
+        return Integer.parseInt(webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT).substring(2, 6));
     }
 
     public String getCopyrightText() {
-        return webElementsActions.getWebElement(COPYRIGHT_FULL_TEXT).getText();
+        return webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT);
     }
 
     public String getCopyrightLink() {

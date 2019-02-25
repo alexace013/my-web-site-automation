@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Log4j
-public class DateUtilTests {
+public class DateUtilTest {
 
     @Test
     public void checkDateUtilGetCurrentYear() {

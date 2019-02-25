@@ -8,7 +8,7 @@ Feature: Home Page tests
   @ignore
   Scenario: 0001 - navigates to home page
     Then user is navigated to http://alexanderbakhin.com/ page
-    And Recheck home page url
+    And recheck home page url
 
   @ignore
   Scenario Outline: 0004 - check 'download resume' button link

@@ -1,10 +1,17 @@
 @SupportPage
 Feature: Support Page tests
 
-  Scenario Outline: 0003 - navigates to support page page
-    Given user opens <support> page
-    Then user is navigated to <support> page
-#    And Recheck support page url
-    Examples:
-      | support                             |
-      | http://support.alexanderbakhin.com/ |
+  Background: navigates on support page
+    Given user opens http://support.alexanderbakhin.com/ page
+
+  Scenario: 0003 - checks that is support page
+    Then user is navigated to http://support.alexanderbakhin.com/ page
+#    And recheck support page url
+
+  Scenario: 0008 - click on 'test button' on support page and navigates on broken page
+    When user clicks on TEST button
+    Then user is navigated to "https://drive.google.com/open?id=0B8WfFN21TEWubXlKQ1FEWGxWcGM" page
+    And status code is 404
+
+  Scenario: 0009 - checks test text on support page
+    Then user checks test text on support page

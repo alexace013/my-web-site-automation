@@ -45,6 +45,10 @@ public class Actions {
         return driver.findElements(By.xpath(xpathToElement));
     }
 
+    public String getTextFromWebElement(final String xpathToElement) {
+        return driver.findElement(By.xpath(xpathToElement)).getText();
+    }
+
     public void clickOnElement(final String xpathToElement) {
         scrollToElementBy(xpathToElement);
         driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathToElement))).click();

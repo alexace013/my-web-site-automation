@@ -15,6 +15,7 @@
         <org.junit.platform.version>1.2.0</org.junit.platform.version>
         <info.cukes.version>1.2.5</info.cukes.version>
         <org.seleniumhq.selenium.version>3.141.59</org.seleniumhq.selenium.version>
+        <org.slf4j.version>1.7.5</org.slf4j.version>
         <chromedriver.headless>true</chromedriver.headless>
         <browser.name>chrome</browser.name>
     </properties>
@@ -138,7 +139,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j.version}</version>
         </dependency>
 
         <dependency>
