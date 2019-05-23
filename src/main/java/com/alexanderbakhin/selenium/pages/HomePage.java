@@ -3,10 +3,12 @@ package com.alexanderbakhin.selenium.pages;
 import com.alexanderbakhin.site.IHomePage;
 import com.alexanderbakhin.site.MyPageUrl;
 import org.openqa.selenium.WebDriver;
+import com.github.javafaker.Faker;
 
 public class HomePage extends AbstractPage implements IHomePage {
 
     private static final String HREF_ATTRIBUTE = "href";
+    private static final String GEN_CONST = "GEN_";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -14,32 +16,62 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoMessageTextArea(final String data) {
-        webElementsActions.inputData(MESSAGE_TEXT_AREA, data);
+        if (data.equals("generate")) {
+            webElementsActions.inputData(MESSAGE_TEXT_AREA,
+                    String.format("%s%s", GEN_CONST, Faker.instance().crypto().sha512()));
+        } else {
+            webElementsActions.inputData(MESSAGE_TEXT_AREA, data);
+        }
     }
 
     @Override
     public void inputDataIntoNameField(final String data) {
-        inputDataIntoField(MessagePanel.NAME, data);
+        if (data.equals("generate")) {
+            inputDataIntoField(MessagePanel.NAME, String.format("%s%s", GEN_CONST,
+                    Faker.instance().name().firstName()));
+        } else {
+            inputDataIntoField(MessagePanel.NAME, data);
+        }
     }
 
     @Override
     public void inputDataIntoEmailField(final String data) {
-        inputDataIntoField(MessagePanel.E_MAIL, data);
+        if (data.equals("generate")) {
+            inputDataIntoField(MessagePanel.E_MAIL, String.format("%s%s@mail.com", GEN_CONST,
+                    Faker.instance().name().title().toLowerCase().replace(" ", "_")));
+        } else {
+            inputDataIntoField(MessagePanel.E_MAIL, data);
+        }
     }
 
     @Override
     public void inputDataIntoCountryField(final String data) {
-        inputDataIntoField(MessagePanel.COUNTRY, data);
+        if (data.equals("generate")) {
+            inputDataIntoField(MessagePanel.COUNTRY, String.format("%s%s", GEN_CONST,
+                    Faker.instance().address().country()));
+        } else {
+            inputDataIntoField(MessagePanel.COUNTRY, data);
+        }
     }
 
     @Override
     public void inputDataIntoCityField(final String data) {
-        inputDataIntoField(MessagePanel.CITY, data);
+        if (data.equals("generate")) {
+            inputDataIntoField(MessagePanel.CITY, String.format("%s%s", GEN_CONST,
+                    Faker.instance().address().city()));
+        } else {
+            inputDataIntoField(MessagePanel.CITY, data);
+        }
     }
 
     @Override
     public void inputDataIntoPhoneField(final String data) {
-        inputDataIntoField(MessagePanel.PHONE, data);
+        if (data.equals("generate")) {
+            inputDataIntoField(MessagePanel.PHONE, String.format("%s%s", GEN_CONST,
+                    Faker.instance().phoneNumber().phoneNumber()));
+        } else {
+            inputDataIntoField(MessagePanel.PHONE, data);
+        }
     }
 
     @Override
