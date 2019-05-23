@@ -61,7 +61,6 @@ public class HomePage extends AbstractPage implements IHomePage {
         webElementsActions.clickOnElement(DOWNLOAD_RESUME_BUTTON);
     }
 
-    @Override
     public boolean isHomePage() {
         return isPage(MyPageUrl.HOME_PAGE_URL.getPageUrl());
     }

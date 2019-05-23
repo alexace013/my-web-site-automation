@@ -1,5 +1,6 @@
 package com.alexanderbakhin.site;
 
+import controller.PropertyController;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -30,8 +31,6 @@ public interface IHomePage {
     boolean isMessageTextEquals(final String text);
 
     void clickOnDownloadResumeButton();
-
-    boolean isHomePage();
 
     @AllArgsConstructor
     @Getter

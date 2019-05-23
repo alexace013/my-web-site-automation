@@ -46,6 +46,7 @@ public class WebDriverInstance {
         return driver;
     }
 
+    @Deprecated
     public static void initSelenideChromeWebDriver() {
         final String selenideInstanceMessage = "\n--- SELENIDE INSTANCE ---\nBROWSER: %s\n---\n";
         log.info(String.format(selenideInstanceMessage, CHROME_NAME));

@@ -4,8 +4,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 import com.alexanderbakhin.site.IHomePage;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
+import controller.PropertyController;
 
 public class HomePage extends AbstractPage implements IHomePage {
+
+    private static final String HOME_PAGE_URL = PropertyController.loadProperty("home.page.url");
 
     @Override
     public void clickOnDownloadResumeButton() {
@@ -53,10 +57,8 @@ public class HomePage extends AbstractPage implements IHomePage {
         return false;
     }
 
-    // TODO #2 need to implement method with Selenide
-    @Override
-    public boolean isHomePage() {
-        return false;
+    public boolean isPage() {
+        return WebDriverRunner.getWebDriver().getCurrentUrl().equals(HOME_PAGE_URL);
     }
 
     private void inputDataIntoField(final String fieldName, final String data) {

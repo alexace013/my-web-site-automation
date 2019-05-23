@@ -1,5 +1,5 @@
 @HomePage
-@Debug
+
 Feature: Home Page tests
 
   Background: open home page

@@ -1,13 +1,11 @@
 package tests.fixtures;
 
-import driver.WebDriverInstance;
-import org.junit.BeforeClass;
+import com.alexanderbakhin.selenide.pages.HomePage;
+import com.alexanderbakhin.selenide.pages.SupportPage;
 
 public class SelenideFixture {
 
-    @BeforeClass
-    public void setUp() {
-        WebDriverInstance.initSelenideChromeWebDriver();
-    }
+    protected HomePage homePage = new HomePage();
+    protected SupportPage supportPage = new SupportPage();
 
 }
