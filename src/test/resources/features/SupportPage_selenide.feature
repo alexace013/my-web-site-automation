@@ -1,4 +1,4 @@
-@SupportPage
+@SelenideSupportPage
 @Debug
 Feature: Support Page tests on Selenide
 

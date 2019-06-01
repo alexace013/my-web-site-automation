@@ -1,4 +1,4 @@
-@HomePage
+@SelenideHomePage
 @Debug
 Feature: Home Page tests on Selenide
 
