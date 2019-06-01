@@ -12,8 +12,8 @@ import tests.fixtures.SeleniumFixture;
                 "html:target/cucumber-reports"},
         features = {"src/test/resources/features"},
         glue = {"tests/stepsDefinitions"},
-//        tags = {"@HomePage, @SupportPage, @Rest"}
-        tags = {"@Default"}
+        tags = {"@HomePage, @SupportPage, @Rest"}
+//        tags = {"@Default"}
 )
 public class MyWebSiteTestsRunner extends SeleniumFixture {
 }
