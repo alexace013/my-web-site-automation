@@ -7,7 +7,7 @@ Feature: Home Page tests
 
   Scenario: 0001 - navigates to home page
     Then user is navigated to http://alexanderbakhin.com/ page
-    And recheck home page url
+#    And recheck home page url
 
   Scenario Outline: 0004 - check 'download resume' button link
     When user clicks on DOWNLOAD RESUME button

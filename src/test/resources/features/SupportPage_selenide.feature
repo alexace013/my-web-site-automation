@@ -1,6 +1,6 @@
 @SupportPage
 @Debug
-Feature: Home Page tests on Selenide
+Feature: Support Page tests on Selenide
 
   Background: open support page
     Given user opens "http://support.alexanderbakhin.com/" page on Selenide

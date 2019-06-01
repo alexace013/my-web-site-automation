@@ -6,6 +6,7 @@ import controller.PropertyController;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import tests.fixtures.SeleniumFixture;
@@ -62,9 +63,7 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
 
     @Then("^recheck home page url$")
     public void recheckHomePageUrl() {
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(myWebSite.homePage.isHomePage()).as("not home page");
-        softly.assertAll();
+        Assertions.assertThat(myWebSite.homePage.isHomePage()).as("not home page").isTrue();
     }
 
     @Then("^form was sent successfully with alert \"([^\"]*)\" text$")
