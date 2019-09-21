@@ -14,14 +14,12 @@ public class RestStepsDefinitions {
     @When("^send request to (\\D+) url$")
     @And("^send request to ([^\"]*) url for my web site$")
     public void sendRequestToUrlForMyWebSite(final String url) {
-        log.info(String.format(NAVIGATE_INFO_MSG, url));
-        RestAssured.when().get(url);
+        send_request_to_url(url);
     }
 
     @And("^send request to ([^\"]*) url$")
     public void sendRequestToUrl(final String url) {
-        log.info(String.format(NAVIGATE_INFO_MSG, url));
-        RestAssured.when().get(url);
+        send_request_to_url(url);
     }
 
     @Then("^status code is (\\d+)$")
@@ -30,4 +28,8 @@ public class RestStepsDefinitions {
         RestAssured.given().then().statusCode(statusCode);
     }
 
+    private void send_request_to_url(final String url) {
+        log.info(String.format(NAVIGATE_INFO_MSG, url));
+        RestAssured.when().get(url);
+    }
 }
