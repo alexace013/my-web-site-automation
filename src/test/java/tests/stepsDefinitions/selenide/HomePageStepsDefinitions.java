@@ -4,21 +4,26 @@ import static com.codeborne.selenide.Condition.visible;
 import static java.lang.String.format;
 import static org.openqa.selenium.By.xpath;
 
+import com.alexanderbakhin.selenium.pages.HomePage;
 import com.alexanderbakhin.site.IHomePage;
+import com.alexanderbakhin.site.MyPageUrl;
 import com.codeborne.selenide.WebDriverRunner;
 import controller.PropertyController;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.fixtures.SeleniumFixture;
+import tests.fixtures.SelenideFixture;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class HomePageStepsDefinitions extends SeleniumFixture {
+public class HomePageStepsDefinitions extends SelenideFixture {
 
     private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
     private static final String COPYRIGHT_SYMBOL = PropertyController.loadProperty("home.page.copyright.symbol");
@@ -76,5 +81,16 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
         Alert alert = WebDriverRunner.getWebDriver().switchTo().alert();
         alert.accept();
         Assertions.assertThat(alert.getText()).as("alert message is not correct.").isEqualTo(text);
+    }
+
+    @Then("^user checks urls from bottom links on Selenide$")
+    public void userChecksUrlsFromBottomLinksOnSelenide() {
+        List<String> actualUrls = new ArrayList<>();
+        actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.FACEBOOK));
+        actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.LINKEDIN));
+        actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.INSTAGRAM));
+        actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.YOUTUBE));
+        actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.GOOGLE_PLUS));
+        Assert.assertTrue(actualUrls.equals(MyPageUrl.getUrls()));
     }
 }

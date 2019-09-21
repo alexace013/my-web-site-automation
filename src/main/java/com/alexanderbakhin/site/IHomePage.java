@@ -1,11 +1,11 @@
 package com.alexanderbakhin.site;
 
-import controller.PropertyController;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public interface IHomePage {
 
+    String HREF_ATTRIBUTE = "href";
     String DOWNLOAD_RESUME_BUTTON = ".//a[@title='google_drive_resume_link_en']";
     String SEND_BUTTON = ".//button[text()='Send']";
     String MESSAGE_TEXT_AREA = ".//input[@value='Message']/following-sibling::textarea";
@@ -31,6 +31,8 @@ public interface IHomePage {
     boolean isMessageTextEquals(final String text);
 
     void clickOnDownloadResumeButton();
+
+    String getHrefFromBottomLink(final BottomLinks link);
 
     @AllArgsConstructor
     @Getter

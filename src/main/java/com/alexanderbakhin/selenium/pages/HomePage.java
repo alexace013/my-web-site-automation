@@ -7,7 +7,6 @@ import com.github.javafaker.Faker;
 
 public class HomePage extends AbstractPage implements IHomePage {
 
-    private static final String HREF_ATTRIBUTE = "href";
     private static final String GEN_CONST = "GEN_";
 
     public HomePage(WebDriver driver) {

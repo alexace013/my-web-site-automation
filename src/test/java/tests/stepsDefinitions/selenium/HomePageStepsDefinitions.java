@@ -73,19 +73,13 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
 
     @Then("^user checks urls from bottom links$")
     public void userChecksUrlsFromBottomLinks() {
-        List<String> expectedUrls = new ArrayList<>();
-        expectedUrls.add(MyPageUrl.FACEBOOK_LINK_URL.getPageUrl());
-        expectedUrls.add(MyPageUrl.LINKEDIN_LINK_URL.getPageUrl());
-        expectedUrls.add(MyPageUrl.INSTAGRAM_LINK_URL.getPageUrl());
-        expectedUrls.add(MyPageUrl.YOUTUBE_LINK_URL.getPageUrl());
-        expectedUrls.add(MyPageUrl.GOOGLE_PLUS_LINK_URL.getPageUrl());
         List<String> actualUrls = new ArrayList<>();
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.FACEBOOK));
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.LINKEDIN));
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.INSTAGRAM));
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.YOUTUBE));
         actualUrls.add(myWebSite.homePage.getHrefFromBottomLink(HomePage.BottomLinks.GOOGLE_PLUS));
-        Assert.assertTrue(actualUrls.equals(expectedUrls));
+        Assert.assertTrue(actualUrls.equals(MyPageUrl.getUrls()));
     }
 
     @Then("^user checks copyright text$")

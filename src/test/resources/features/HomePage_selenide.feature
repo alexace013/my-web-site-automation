@@ -30,3 +30,6 @@ Feature: Home Page tests on Selenide
       | name     | email         | country     | city     | phone             | message           |
       | TestName | test@mail.com | TestCountry | TestCity | +12(345)678-90-12 | Test Message Text |
 #      | generate | generate      | generate    | generate | generate          | generate          |
+
+  Scenario: 0004 - check bottom links
+    Then user checks urls from bottom links on Selenide

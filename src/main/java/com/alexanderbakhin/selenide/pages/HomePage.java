@@ -64,4 +64,9 @@ public class HomePage extends AbstractPage implements IHomePage {
     private void inputDataIntoField(final String fieldName, final String data) {
         $x(String.format(INPUT_FIELDS, fieldName)).shouldBe(Condition.visible).data(data);
     }
+
+    @Override
+    public String getHrefFromBottomLink(BottomLinks link) {
+        return $x(String.format(BOTTOM_LINKS, link.getAttrTitle())).getAttribute(HREF_ATTRIBUTE);
+    }
 }
