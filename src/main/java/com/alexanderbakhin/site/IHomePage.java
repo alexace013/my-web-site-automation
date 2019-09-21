@@ -1,18 +1,20 @@
 package com.alexanderbakhin.site;
 
+import controller.PropertyController;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public interface IHomePage {
 
+    String HOME_PAGE_URL = PropertyController.loadProperty("home.page.url");
     String HREF_ATTRIBUTE = "href";
-    String DOWNLOAD_RESUME_BUTTON = ".//a[@title='google_drive_resume_link_en']";
-    String SEND_BUTTON = ".//button[text()='Send']";
-    String MESSAGE_TEXT_AREA = ".//input[@value='Message']/following-sibling::textarea";
-    String INPUT_FIELDS = ".//input[@value='%s']/following-sibling::input";
-    String BOTTOM_LINKS = ".//a[@title='%s']";
-    String COPYRIGHT_FULL_TEXT = ".//p[@class='wb-stl-footer']";
-    String COPYRIGHT_LINK = ".//p[@class='wb-stl-footer']/a";
+    String DOWNLOAD_RESUME_BUTTON_XPATH = ".//a[@title='google_drive_resume_link_en']";
+    String SEND_BUTTON_XPATH = ".//button[text()='Send']";
+    String MESSAGE_TEXT_AREA_XPATH = ".//input[@value='Message']/following-sibling::textarea";
+    String INPUT_FIELDS_XPATH = ".//input[@value='%s']/following-sibling::input";
+    String BOTTOM_LINKS_XPATH = ".//a[@title='%s']";
+    String COPYRIGHT_FULL_TEXT_XPATH = ".//p[@class='wb-stl-footer']";
+    String COPYRIGHT_LINK_XPATH = ".//p[@class='wb-stl-footer']/a";
 
     void inputDataIntoMessageTextArea(final String data);
 
@@ -33,6 +35,12 @@ public interface IHomePage {
     void clickOnDownloadResumeButton();
 
     String getHrefFromBottomLink(final BottomLinks link);
+
+    String getCopyrightText();
+
+    String getCopyrightLink();
+
+    int getCopyrightYear();
 
     @AllArgsConstructor
     @Getter

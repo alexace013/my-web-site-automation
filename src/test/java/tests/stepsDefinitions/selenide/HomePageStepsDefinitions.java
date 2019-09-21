@@ -13,11 +13,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tests.fixtures.SelenideFixture;
+import utils.DateUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class HomePageStepsDefinitions extends SelenideFixture {
 
     @When("^user clicks on DOWNLOAD RESUME button on Selenide$")
     public void userClicksOnDownloadResumeButtonOnSelenide() {
-        $(xpath(IHomePage.DOWNLOAD_RESUME_BUTTON)).shouldBe(visible).click();
+        $(xpath(IHomePage.DOWNLOAD_RESUME_BUTTON_XPATH)).shouldBe(visible).click();
     }
 
     @When("^user inputs \"([^\"]*)\" data in name field on Selenide$")
@@ -60,18 +63,18 @@ public class HomePageStepsDefinitions extends SelenideFixture {
     }
 
     private static void inputDataIntoField(final IHomePage.MessagePanel messagePanel, final String data) {
-        $(xpath(format(IHomePage.INPUT_FIELDS, messagePanel.getField()))).shouldBe(visible).setValue(data);
+        $(xpath(format(IHomePage.INPUT_FIELDS_XPATH, messagePanel.getField()))).shouldBe(visible).setValue(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in message textarea on Selenide$")
     @And("^user inputs \"([^\"]*)\" data in message field on Selenide$")
     public void userInputsDataInMessageFieldOnSelenide(final String data) {
-        $(xpath(IHomePage.MESSAGE_TEXT_AREA)).shouldBe(visible).setValue(data);
+        $(xpath(IHomePage.MESSAGE_TEXT_AREA_XPATH)).shouldBe(visible).setValue(data);
     }
 
     @When("^user clicks on SEND button on Selenide$")
     public void userClicksOnSendButtonOnSelenide() {
-        $(xpath(IHomePage.SEND_BUTTON)).shouldBe(visible).click();
+        $(xpath(IHomePage.SEND_BUTTON_XPATH)).shouldBe(visible).click();
     }
 
     @Then("^form was sent successfully with alert \"([^\"]*)\" text on Selenide$")
@@ -92,5 +95,30 @@ public class HomePageStepsDefinitions extends SelenideFixture {
         actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.YOUTUBE));
         actualUrls.add(homePage.getHrefFromBottomLink(HomePage.BottomLinks.GOOGLE_PLUS));
         Assert.assertTrue(actualUrls.equals(MyPageUrl.getUrls()));
+    }
+
+    @Then("^user checks copyright text on Selenide$")
+    public void userChecksCopyrightText() {
+        SoftAssertions softly = new SoftAssertions();
+        final String copyrightWebElementText = homePage.getCopyrightText();
+        softly.assertThat(copyrightWebElementText.substring(0, 1)).isEqualTo(COPYRIGHT_SYMBOL);
+        softly.assertThat(copyrightWebElementText.substring(7)).isEqualTo(COPYRIGHT_TEXT);
+        softly.assertAll();
+    }
+
+    @And("^copyright date is a current year on Selenide$")
+    public void copyrightDateIsCurrentYear() {
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(homePage.getCopyrightYear())
+                .as("Copyright year is not actual current year")
+                .isEqualTo(DateUtil.getCurrentYear());
+        softly.assertAll();
+    }
+
+    @And("^user checks copyright link on Selenide$")
+    public void userChecksCopyrightLink() {
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(homePage.getCopyrightLink()).isEqualTo(COPYRIGHT_TEXT);
+        softly.assertAll();
     }
 }

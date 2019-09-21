@@ -16,10 +16,10 @@ public class HomePage extends AbstractPage implements IHomePage {
     @Override
     public void inputDataIntoMessageTextArea(final String data) {
         if (data.equals("generate")) {
-            webElementsActions.inputData(MESSAGE_TEXT_AREA,
+            webElementsActions.inputData(MESSAGE_TEXT_AREA_XPATH,
                     String.format("%s%s", GEN_CONST, Faker.instance().crypto().sha512()));
         } else {
-            webElementsActions.inputData(MESSAGE_TEXT_AREA, data);
+            webElementsActions.inputData(MESSAGE_TEXT_AREA_XPATH, data);
         }
     }
 
@@ -75,11 +75,11 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void clickOnSendButton() {
-        webElementsActions.clickOnElement(SEND_BUTTON);
+        webElementsActions.clickOnElement(SEND_BUTTON_XPATH);
     }
 
     private void inputDataIntoField(final MessagePanel fieldValue, final String data) {
-        webElementsActions.inputData(String.format(INPUT_FIELDS, fieldValue.getField()), data);
+        webElementsActions.inputData(String.format(INPUT_FIELDS_XPATH, fieldValue.getField()), data);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void clickOnDownloadResumeButton() {
-        webElementsActions.clickOnElement(DOWNLOAD_RESUME_BUTTON);
+        webElementsActions.clickOnElement(DOWNLOAD_RESUME_BUTTON_XPATH);
     }
 
     public boolean isHomePage() {
@@ -97,19 +97,22 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     public int getCopyrightYear() {
-        return Integer.parseInt(webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT).substring(2, 6));
+        return Integer.parseInt(webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT_XPATH).substring(2, 6));
     }
 
+    @Override
     public String getCopyrightText() {
-        return webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT);
+        return webElementsActions.getTextFromWebElement(COPYRIGHT_FULL_TEXT_XPATH);
     }
 
+    @Override
     public String getCopyrightLink() {
-        return webElementsActions.getAttributeTitleFromElement(COPYRIGHT_LINK, HREF_ATTRIBUTE);
+        return webElementsActions.getAttributeTitleFromElement(COPYRIGHT_LINK_XPATH, HREF_ATTRIBUTE);
     }
 
+    @Override
     public String getHrefFromBottomLink(final BottomLinks link) {
         return webElementsActions.getAttributeTitleFromElement(
-                String.format(BOTTOM_LINKS, link.getAttrTitle()), HREF_ATTRIBUTE);
+                String.format(BOTTOM_LINKS_XPATH, link.getAttrTitle()), HREF_ATTRIBUTE);
     }
 }

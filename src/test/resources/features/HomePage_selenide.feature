@@ -33,3 +33,8 @@ Feature: Home Page tests on Selenide
 
   Scenario: 0004 - check bottom links
     Then user checks urls from bottom links on Selenide
+
+    Scenario: 0005 - check copyright text and date
+      Then user checks copyright text on Selenide
+      And copyright date is a current year on Selenide
+      And user checks copyright link on Selenide

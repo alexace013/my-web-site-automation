@@ -9,21 +9,19 @@ import controller.PropertyController;
 
 public class HomePage extends AbstractPage implements IHomePage {
 
-    private static final String HOME_PAGE_URL = PropertyController.loadProperty("home.page.url");
-
     @Override
     public void clickOnDownloadResumeButton() {
-        $x(DOWNLOAD_RESUME_BUTTON).shouldBe(Condition.visible).click();
+        $x(DOWNLOAD_RESUME_BUTTON_XPATH).shouldBe(Condition.visible).click();
     }
 
     @Override
     public void clickOnSendButton() {
-        $x(SEND_BUTTON).shouldBe(Condition.visible).click();
+        $x(SEND_BUTTON_XPATH).shouldBe(Condition.visible).click();
     }
 
     @Override
     public void inputDataIntoMessageTextArea(String data) {
-        $x(MESSAGE_TEXT_AREA).shouldBe(Condition.visible).data(data);
+        $x(MESSAGE_TEXT_AREA_XPATH).shouldBe(Condition.visible).data(data);
     }
 
     @Override
@@ -62,11 +60,26 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     private void inputDataIntoField(final String fieldName, final String data) {
-        $x(String.format(INPUT_FIELDS, fieldName)).shouldBe(Condition.visible).data(data);
+        $x(String.format(INPUT_FIELDS_XPATH, fieldName)).shouldBe(Condition.visible).data(data);
     }
 
     @Override
     public String getHrefFromBottomLink(BottomLinks link) {
-        return $x(String.format(BOTTOM_LINKS, link.getAttrTitle())).getAttribute(HREF_ATTRIBUTE);
+        return $x(String.format(BOTTOM_LINKS_XPATH, link.getAttrTitle())).getAttribute(HREF_ATTRIBUTE);
+    }
+
+    @Override
+    public String getCopyrightText() {
+        return $x(COPYRIGHT_FULL_TEXT_XPATH).getText();
+    }
+
+    @Override
+    public String getCopyrightLink() {
+        return $x(COPYRIGHT_LINK_XPATH).getText();
+    }
+
+    @Override
+    public int getCopyrightYear() {
+        return Integer.parseInt($x(COPYRIGHT_FULL_TEXT_XPATH).getText().substring(2, 6));
     }
 }

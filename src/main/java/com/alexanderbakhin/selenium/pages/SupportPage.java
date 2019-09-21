@@ -15,10 +15,10 @@ public class SupportPage extends AbstractPage implements ISupportPage {
     }
 
     public void clickOnTestButton() {
-        webElementsActions.clickOnElement(TEST_BUTTON);
+        webElementsActions.clickOnElement(TEST_BUTTON_XPATH);
     }
 
     public String getTestText() {
-        return webElementsActions.getTextFromWebElement(TEST_TEXT);
+        return webElementsActions.getTextFromWebElement(TEST_TEXT_XPATH);
     }
 }
