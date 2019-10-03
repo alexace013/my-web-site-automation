@@ -4,8 +4,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 import com.alexanderbakhin.site.IHomePage;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.WebDriverRunner;
-import controller.PropertyController;
+import utils.WebDriverSelenideUtil;
 
 public class HomePage extends AbstractPage implements IHomePage {
 
@@ -56,7 +55,7 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     public boolean isPage() {
-        return WebDriverRunner.getWebDriver().getCurrentUrl().equals(HOME_PAGE_URL);
+        return WebDriverSelenideUtil.getWebDriver().getCurrentUrl().equals(HOME_PAGE_URL);
     }
 
     private void inputDataIntoField(final String fieldName, final String data) {

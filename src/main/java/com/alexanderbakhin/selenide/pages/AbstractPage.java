@@ -2,7 +2,7 @@ package com.alexanderbakhin.selenide.pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
+import utils.WebDriverSelenideUtil;
 
 import java.net.URL;
 
@@ -23,6 +23,6 @@ public abstract class AbstractPage {
     public abstract boolean isPage();
 
     public String getCurrentUrl() {
-        return WebDriverRunner.getWebDriver().getCurrentUrl();
+        return WebDriverSelenideUtil.getWebDriver().getCurrentUrl();
     }
 }

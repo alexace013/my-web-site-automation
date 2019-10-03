@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static com.alexanderbakhin.site.MyPageUrl.HOME_PAGE_URL;
 import static com.alexanderbakhin.site.MyPageUrl.SUPPORT_PAGE_URL;
 
-import com.codeborne.selenide.WebDriverRunner;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,6 +12,7 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import tests.fixtures.SelenideFixture;
 import utils.UrlUtil;
+import utils.WebDriverSelenideUtil;
 
 @Log4j
 public class CommonPageStepsDefinitions extends SelenideFixture {
@@ -36,7 +36,7 @@ public class CommonPageStepsDefinitions extends SelenideFixture {
 
     @And("^user is switched in new tab to (.*) url on Selenide$")
     public void userNavigatedToPageUrl(final String expectedPageUrl) {
-        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriver driver = WebDriverSelenideUtil.getWebDriver();
         String windowHandle = driver.getWindowHandle();
         for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
