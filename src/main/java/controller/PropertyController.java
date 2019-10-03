@@ -11,8 +11,9 @@ public class PropertyController {
 
     private static final String[] PROPERTIES_FILES =
             {
-                    "/common.properties",
                     "/chromedriver.properties",
+                    "/common.properties",
+                    "/log4j.properties",
                     "/site.properties",
                     "/test.properties"
             };
@@ -22,6 +23,7 @@ public class PropertyController {
         Properties properties = new Properties();
         try {
             for (String PROPERTY : PROPERTIES_FILES) {
+                log.debug(String.format("Load the property: [%s]", PROPERTY));
                 properties.load(PropertyController.class.getResourceAsStream(PROPERTY));
                 propertiesMapping = properties;
             }
@@ -30,9 +32,21 @@ public class PropertyController {
         }
     }
 
-    public static synchronized String loadProperty(final String propertyName) {
-        if (propertiesMapping == null) {
-            loadProperties();
+    public static synchronized String loadProperty(final String propertyName) throws NullPointerException {
+        if (propertyName == null) {
+            String debugWarnMessageText;
+            try {
+                debugWarnMessageText = String.format("propertyName is %s", PropertyController.class.getMethod("loadProperty").getParameters()[0]);
+                log.debug(debugWarnMessageText);
+                log.warn(debugWarnMessageText);
+            } catch (NoSuchMethodException e) {
+                log.error(e);
+            }
+            throw new NullPointerException();
+        } else {
+            if (propertiesMapping == null) {
+                loadProperties();
+            }
         }
         return String.valueOf(propertiesMapping.get(propertyName));
     }

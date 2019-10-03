@@ -30,7 +30,7 @@ public class ResourcesFolderUtil {
      * @param directoryPath   another directory path i project structure
      * @return array Strings with resources folderName filenames
      */
-    private static String[] getResourcesFolderFilenamesByTypeOfFiles(
+    public static String[] getResourcesFolderFilenamesByTypeOfFiles(
             final String resourcesFolder,
             final String typeOfFiles,
             final String... directoryPath) {
@@ -55,7 +55,7 @@ public class ResourcesFolderUtil {
         return filenamesList.toArray(new String[0]);
     }
 
-    enum ResourcesFolder {
+    public enum ResourcesFolder {
         MAIN, TEST
     }
 }

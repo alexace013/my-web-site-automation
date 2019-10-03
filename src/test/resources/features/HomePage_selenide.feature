@@ -2,13 +2,13 @@
 @Debug
 Feature: Home Page tests on Selenide
 
-  Background: open home page
+  Background: open home page on Selenide
     Given user opens "http://alexanderbakhin.com/" page on Selenide
 
-  Scenario: 0001 - navigates to home page
+  Scenario: 0011 - navigates to home page on Selenide
     Then user is navigated to "http://alexanderbakhin.com/" page on Selenide
 
-  Scenario Outline: 0002 - check 'download resume' button link on Selenide
+  Scenario Outline: 0012 - check 'download resume' button link on Selenide
     When user clicks on DOWNLOAD RESUME button on Selenide
     Then user is switched in new tab to <google drive resume url> url on Selenide
 
@@ -16,7 +16,7 @@ Feature: Home Page tests on Selenide
       | google drive resume url                                                |
       | https://drive.google.com/file/d/1SZAIO2978XL0arryh19Wumsag7W0eD1_/view |
 
-  Scenario Outline: 0003 - send test and generate message from home page on Selenide
+  Scenario Outline: 0013 - send test and generate message from home page on Selenide
     When user inputs "<name>" data in name field on Selenide
     And user inputs "<email>" data in e-mail field on Selenide
     And user inputs "<country>" data in country field on Selenide
@@ -31,10 +31,10 @@ Feature: Home Page tests on Selenide
       | TestName | test@mail.com | TestCountry | TestCity | +12(345)678-90-12 | Test Message Text |
 #      | generate | generate      | generate    | generate | generate          | generate          |
 
-  Scenario: 0004 - check bottom links
+  Scenario: 0014 - check bottom links
     Then user checks urls from bottom links on Selenide
 
-    Scenario: 0005 - check copyright text and date
+    Scenario: 0015 - check copyright text and date on Selenide
       Then user checks copyright text on Selenide
       And copyright date is a current year on Selenide
       And user checks copyright link on Selenide
