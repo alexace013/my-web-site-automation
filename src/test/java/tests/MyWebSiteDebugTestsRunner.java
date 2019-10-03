@@ -13,5 +13,5 @@ import tests.fixtures.SeleniumFixture;
         glue = {"tests/stepsDefinitions"},
         tags = {"@Debug", "~@ignore"}
 )
-public class MyWebSiteTestsDebugRunner extends SeleniumFixture {
+public class MyWebSiteDebugTestsRunner extends SeleniumFixture {
 }

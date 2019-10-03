@@ -1,4 +1,4 @@
-package com.alexanderbakhin.site;
+package com.alexanderbakhin.site.selenium;
 
 import actions.Actions;
 import com.alexanderbakhin.selenium.pages.AbstractPage;
