@@ -8,6 +8,8 @@ import com.github.javafaker.Faker;
 public class HomePage extends AbstractPage implements IHomePage {
 
     private static final String GEN_CONST = "GEN_";
+    private static final String GENERATE_CONST = "generate";
+    private static final String FORMAT_CONST = "%s%s";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -15,9 +17,9 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoMessageTextArea(final String data) {
-        if (data.equals("generate")) {
+        if (data.equals(GENERATE_CONST)) {
             webElementsActions.inputData(MESSAGE_TEXT_AREA_XPATH,
-                    String.format("%s%s", GEN_CONST, Faker.instance().crypto().sha512()));
+                    String.format(FORMAT_CONST, GEN_CONST, Faker.instance().crypto().sha512()));
         } else {
             webElementsActions.inputData(MESSAGE_TEXT_AREA_XPATH, data);
         }
@@ -25,8 +27,8 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoNameField(final String data) {
-        if (data.equals("generate")) {
-            inputDataIntoField(MessagePanel.NAME, String.format("%s%s", GEN_CONST,
+        if (data.equals(GENERATE_CONST)) {
+            inputDataIntoField(MessagePanel.NAME, String.format(FORMAT_CONST, GEN_CONST,
                     Faker.instance().name().firstName()));
         } else {
             inputDataIntoField(MessagePanel.NAME, data);
@@ -35,8 +37,8 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoEmailField(final String data) {
-        if (data.equals("generate")) {
-            inputDataIntoField(MessagePanel.E_MAIL, String.format("%s%s@mail.com", GEN_CONST,
+        if (data.equals(GENERATE_CONST)) {
+            inputDataIntoField(MessagePanel.E_MAIL, String.format(FORMAT_CONST.concat("@mail.com"), GEN_CONST,
                     Faker.instance().name().title().toLowerCase().replace(" ", "_")));
         } else {
             inputDataIntoField(MessagePanel.E_MAIL, data);
@@ -45,8 +47,8 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoCountryField(final String data) {
-        if (data.equals("generate")) {
-            inputDataIntoField(MessagePanel.COUNTRY, String.format("%s%s", GEN_CONST,
+        if (data.equals(GENERATE_CONST)) {
+            inputDataIntoField(MessagePanel.COUNTRY, String.format(FORMAT_CONST, GEN_CONST,
                     Faker.instance().address().country()));
         } else {
             inputDataIntoField(MessagePanel.COUNTRY, data);
@@ -55,8 +57,8 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoCityField(final String data) {
-        if (data.equals("generate")) {
-            inputDataIntoField(MessagePanel.CITY, String.format("%s%s", GEN_CONST,
+        if (data.equals(GENERATE_CONST)) {
+            inputDataIntoField(MessagePanel.CITY, String.format(FORMAT_CONST, GEN_CONST,
                     Faker.instance().address().city()));
         } else {
             inputDataIntoField(MessagePanel.CITY, data);
@@ -65,8 +67,8 @@ public class HomePage extends AbstractPage implements IHomePage {
 
     @Override
     public void inputDataIntoPhoneField(final String data) {
-        if (data.equals("generate")) {
-            inputDataIntoField(MessagePanel.PHONE, String.format("%s%s", GEN_CONST,
+        if (data.equals(GENERATE_CONST)) {
+            inputDataIntoField(MessagePanel.PHONE, String.format(FORMAT_CONST, GEN_CONST,
                     Faker.instance().phoneNumber().phoneNumber()));
         } else {
             inputDataIntoField(MessagePanel.PHONE, data);
