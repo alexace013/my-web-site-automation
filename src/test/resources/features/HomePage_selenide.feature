@@ -34,7 +34,11 @@ Feature: Home Page tests on Selenide
   Scenario: 0014 - check bottom links
     Then user checks urls from bottom links on Selenide
 
-    Scenario: 0015 - check copyright text and date on Selenide
-      Then user checks copyright text on Selenide
-      And copyright date is a current year on Selenide
-      And user checks copyright link on Selenide
+  Scenario: 0015 - check copyright text and date on Selenide
+    Then user checks copyright text on Selenide
+    And copyright date is a current year on Selenide
+    And user checks copyright link on Selenide
+
+  Scenario: 0019 - check 'support' button link on Selenide
+    When user clicks on SUPPORT button on Selenide
+    Then user is navigated to "http://support.alexanderbakhin.com/" page on Selenide

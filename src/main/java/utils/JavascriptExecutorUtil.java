@@ -22,7 +22,7 @@ public class JavascriptExecutorUtil {
         scrollWindowOnPixels(driver, 0, verticalPixelScrollValue);
     }
 
-    public static void scrollWindowOnHorizontalPixels(final WebDriver driver,
+    public static void scrollWindowOnHoriontalPixels(final WebDriver driver,
                                                      final int horizontalPixelScrollValue) {
         scrollWindowOnPixels(driver, horizontalPixelScrollValue, 0);
     }

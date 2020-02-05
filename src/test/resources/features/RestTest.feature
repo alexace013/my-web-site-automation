@@ -5,9 +5,10 @@ Feature: rest tests
     Then send request to <url> url for my web site
     Then status code is <statusCode>
     Examples:
-      | url                                | statusCode |
-      | http://alexanderbakhin.com         | 200        |
-      | http://support.alexanderbakhin.com | 200        |
+      | url                                              | statusCode |
+      | http://alexanderbakhin.com                       | 200        |
+      | http://support.alexanderbakhin.com               | 200        |
+      | http://alexanderbakhincom.s46.yourdomain.com.ua/ | 200        |
 
   Scenario Outline: 0010 - REST navigates to page
     Then send request to <url> url

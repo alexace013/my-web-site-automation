@@ -19,6 +19,11 @@ public class HomePage extends AbstractPage implements IHomePage {
     }
 
     @Override
+    public void clickOnSupportButton() {
+        $x(SUPPORT_BUTTON_XPATH).shouldBe(Condition.visible).click();
+    }
+
+    @Override
     public void inputDataIntoMessageTextArea(String data) {
         $x(MESSAGE_TEXT_AREA_XPATH).shouldBe(Condition.visible).data(data);
     }
@@ -52,6 +57,11 @@ public class HomePage extends AbstractPage implements IHomePage {
     @Override
     public boolean isMessageTextEquals(String text) {
         return false;
+    }
+
+    @Override
+    public void checkAlertMessageText(String text) {
+        $x(ALERT_MESSAGE_XPATH).shouldBe(Condition.visible).shouldHave(Condition.text(text));
     }
 
     public boolean isPage() {

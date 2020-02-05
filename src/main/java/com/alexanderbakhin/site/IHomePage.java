@@ -15,6 +15,8 @@ public interface IHomePage {
     String BOTTOM_LINKS_XPATH = ".//a[@title='%s']";
     String COPYRIGHT_FULL_TEXT_XPATH = ".//p[@class='wb-stl-footer']";
     String COPYRIGHT_LINK_XPATH = ".//p[@class='wb-stl-footer']/a";
+    String SUPPORT_BUTTON_XPATH = ".//a[@title='support-link']";
+    String ALERT_MESSAGE_XPATH = ".//div[contains(@class, 'alert-success')]";
 
     void inputDataIntoMessageTextArea(final String data);
 
@@ -30,7 +32,11 @@ public interface IHomePage {
 
     void clickOnSendButton();
 
+    void clickOnSupportButton();
+
     boolean isMessageTextEquals(final String text);
+
+    void checkAlertMessageText(final String text);
 
     void clickOnDownloadResumeButton();
 

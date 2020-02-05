@@ -56,6 +56,11 @@ public class HomePageStepsDefinitions extends SeleniumFixture {
         myWebSite.homePage.clickOnSendButton();
     }
 
+    @When("^user clicks on SUPPORT button$")
+    public void userCLicksOnSupportButton() {
+        myWebSite.homePage.clickOnSendButton();
+    }
+
     @When("^user clicks on DOWNLOAD RESUME button$")
     public void userClicksOnDownloadResumeButton() {
         myWebSite.homePage.clickOnDownloadResumeButton();

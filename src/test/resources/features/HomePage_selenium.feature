@@ -15,7 +15,7 @@ Feature: Home Page tests
     Examples:
       | google drive resume url                                                |
       | https://drive.google.com/file/d/1SZAIO2978XL0arryh19Wumsag7W0eD1_/view |
-    
+
   Scenario Outline: 0005 - send test and generate message from home page
     When user inputs "<name>" data in name field
     And user inputs "<email>" data in e-mail field
@@ -38,3 +38,7 @@ Feature: Home Page tests
     Then user checks copyright text
     And copyright date is a current year
     And user checks copyright link
+
+  Scenario: 0020 - check 'support' button link
+    When user clicks on SUPPORT button
+    Then user is navigated to http://support.alexanderbakhin.com/ page

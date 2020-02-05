@@ -1,11 +1,6 @@
 package tests.stepsDefinitions.selenide;
 
-import static com.codeborne.selenide.Condition.visible;
-import static java.lang.String.format;
-import static org.openqa.selenium.By.xpath;
-
 import com.alexanderbakhin.selenium.pages.HomePage;
-import com.alexanderbakhin.site.IHomePage;
 import com.alexanderbakhin.site.MyPageUrl;
 import com.codeborne.selenide.WebDriverRunner;
 import controller.PropertyController;
@@ -24,8 +19,6 @@ import utils.DateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class HomePageStepsDefinitions extends SelenideFixture {
 
     private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
@@ -34,47 +27,48 @@ public class HomePageStepsDefinitions extends SelenideFixture {
 
     @When("^user clicks on DOWNLOAD RESUME button on Selenide$")
     public void userClicksOnDownloadResumeButtonOnSelenide() {
-        $(xpath(IHomePage.DOWNLOAD_RESUME_BUTTON_XPATH)).shouldBe(visible).click();
+        homePage.clickOnDownloadResumeButton();
     }
 
     @When("^user inputs \"([^\"]*)\" data in name field on Selenide$")
     public void userInputsDataInNameFieldOnSelenide(final String data) {
-        inputDataIntoField(IHomePage.MessagePanel.NAME, data);
+        homePage.inputDataIntoNameField(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in e-mail field on Selenide$")
     public void userInputsDataInEmailFieldOnSelenide(final String data) {
-        inputDataIntoField(IHomePage.MessagePanel.E_MAIL, data);
+        homePage.inputDataIntoEmailField(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in country field on Selenide$")
     public void userInputsDataInCountryFieldOnSelenide(final String data) {
-        inputDataIntoField(IHomePage.MessagePanel.COUNTRY, data);
+        homePage.inputDataIntoCountryField(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in city field on Selenide$")
     public void userInputsDataInCityFieldOnSelenide(final String data) {
-        inputDataIntoField(IHomePage.MessagePanel.CITY, data);
+        homePage.inputDataIntoCityField(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in phone field on Selenide$")
     public void userInputsDataInPhoneFieldOnSelenide(final String data) {
-        inputDataIntoField(IHomePage.MessagePanel.PHONE, data);
-    }
-
-    private static void inputDataIntoField(final IHomePage.MessagePanel messagePanel, final String data) {
-        $(xpath(format(IHomePage.INPUT_FIELDS_XPATH, messagePanel.getField()))).shouldBe(visible).setValue(data);
+        homePage.inputDataIntoPhoneField(data);
     }
 
     @When("^user inputs \"([^\"]*)\" data in message textarea on Selenide$")
     @And("^user inputs \"([^\"]*)\" data in message field on Selenide$")
     public void userInputsDataInMessageFieldOnSelenide(final String data) {
-        $(xpath(IHomePage.MESSAGE_TEXT_AREA_XPATH)).shouldBe(visible).setValue(data);
+        homePage.inputDataIntoMessageTextArea(data);
     }
 
     @When("^user clicks on SEND button on Selenide$")
     public void userClicksOnSendButtonOnSelenide() {
-        $(xpath(IHomePage.SEND_BUTTON_XPATH)).shouldBe(visible).click();
+        homePage.clickOnSendButton();
+    }
+
+    @When("^user clicks on SUPPORT button on Selenide")
+    public void userClicksOnSupportButtonOnSelenide() {
+        homePage.clickOnSupportButton();
     }
 
     @Then("^form was sent successfully with alert \"([^\"]*)\" text on Selenide$")
