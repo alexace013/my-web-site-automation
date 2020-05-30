@@ -3,6 +3,7 @@ package tests;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
+import tests.fixtures.SeleniumFixture;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -11,7 +12,7 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports"},
         features = {"src/test/resources/features"},
         glue = {"tests/stepsDefinitions"},
-        tags = {"@MainPage, @SupportPage, @Rest"}
+        tags = {"@HomePage, @SupportPage, @Rest"}
 )
-public class MyWebSiteTestsRunner extends Fixture {
+public class MyWebSiteTestsRunner extends SeleniumFixture {
 }

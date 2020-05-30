@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import controller.PropertyController;
+import utils.JavascriptExecutorUtil;
 
 import java.util.List;
 
@@ -13,7 +14,6 @@ import java.util.List;
 public class Actions {
 
     private static final String WAIT_30_SEC = PropertyController.loadProperty("wait.timeout.30sec");
-    private static final String WINDOW_SCROLL_JS_SCRIPT = "window.scrollBy(0,%d)";
 
     private WebDriver driver;
     private WebDriverWait driverWait;
@@ -45,6 +45,10 @@ public class Actions {
         return driver.findElements(By.xpath(xpathToElement));
     }
 
+    public String getTextFromWebElement(final String xpathToElement) {
+        return driver.findElement(By.xpath(xpathToElement)).getText();
+    }
+
     public void clickOnElement(final String xpathToElement) {
         scrollToElementBy(xpathToElement);
         driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathToElement))).click();
@@ -64,10 +68,7 @@ public class Actions {
     }
 
     public void waitForPageLoaded() {
-        ExpectedCondition<Boolean> condition = driver -> ((JavascriptExecutor) driver)
-                .executeScript("return document.readyState")
-                .toString()
-                .equals("complete");
+        ExpectedCondition<Boolean> condition = driver -> (JavascriptExecutorUtil.isPageLoaded(driver));
         driverWait.until(condition);
     }
 
@@ -79,8 +80,7 @@ public class Actions {
     public void scrollToElement(final WebElement element) {
         int elementCoordinateY = element.getLocation().getY();
         log.info(String.format("scroll to element coordinate to Y: %d", elementCoordinateY));
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript(String.format(WINDOW_SCROLL_JS_SCRIPT, elementCoordinateY));
+        JavascriptExecutorUtil.scrollWindowOnVerticalPixels(driver, elementCoordinateY);
     }
 
     /**
