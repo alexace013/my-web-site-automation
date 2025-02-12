@@ -1,10 +1,12 @@
 package utils;
 
-import static utils.FilesUtil.ResourcesFolder.MAIN;
-import static utils.FilesUtil.ResourcesFolder.TEST;
+import static utils.ResourcesFolderUtil.ResourcesFolder.MAIN;
+import static utils.ResourcesFolderUtil.ResourcesFolder.TEST;
 import static controller.PropertyController.PropertyType.PROP;
 import static controller.PropertyController.PropertyType.TST;
 
+import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 import java.io.File;
@@ -12,14 +14,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @Log4j
-public class FilesUtil {
+public class ResourcesFolderUtil {
 
     public static String[] getMainResourcesFolderPropertiesFilenames() {
-        return getResourcesFolderFilenamesByTypeOfFiles(MAIN.getFolderName(), PROP.getProperty());
+        return getResourcesFolderFilenamesByTypeOfFiles(MAIN.toString().toLowerCase(), PROP.getProperty());
     }
 
     public static String[] getTestResourcesFolderPropertiesFilenames() {
-        return getResourcesFolderFilenamesByTypeOfFiles(TEST.getFolderName(), TST.getProperty(), "test");
+        return getResourcesFolderFilenamesByTypeOfFiles(TEST.toString().toLowerCase(), TST.getProperty(), "test");
     }
 
     /**
@@ -28,7 +30,7 @@ public class FilesUtil {
      * @param directoryPath   another directory path i project structure
      * @return array Strings with resources folderName filenames
      */
-    private static String[] getResourcesFolderFilenamesByTypeOfFiles(
+    public static String[] getResourcesFolderFilenamesByTypeOfFiles(
             final String resourcesFolder,
             final String typeOfFiles,
             final String... directoryPath) {
@@ -53,17 +55,7 @@ public class FilesUtil {
         return filenamesList.toArray(new String[0]);
     }
 
-    enum ResourcesFolder {
-        MAIN("main"),
-        TEST("test");
-        private String folderName;
-
-        ResourcesFolder(final String folderName) {
-            this.folderName = folderName;
-        }
-
-        public String getFolderName() {
-            return folderName;
-        }
+    public enum ResourcesFolder {
+        MAIN, TEST
     }
 }

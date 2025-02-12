@@ -14,11 +14,33 @@
         <org.junit.version>5.2.0</org.junit.version>
         <org.junit.platform.version>1.2.0</org.junit.platform.version>
         <info.cukes.version>1.2.5</info.cukes.version>
-        <org.seleniumhq.selenium.version>3.12.0</org.seleniumhq.selenium.version>
+        <org.seleniumhq.selenium.version>3.141.59</org.seleniumhq.selenium.version>
+        <org.slf4j.version>1.7.5</org.slf4j.version>
         <chromedriver.headless>true</chromedriver.headless>
         <browser.name>chrome</browser.name>
     </properties>
     <!--<packaging>jar</packaging>-->
+
+    <profiles>
+        <profile>
+            <id>local ui</id>
+            <properties>
+                <chromedriver.headless>true</chromedriver.headless>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <chromedriver.headless>false</chromedriver.headless>
+            </properties>
+        </profile>
+        <profile>
+            <id>circle ci</id>
+            <properties>
+                <chromedriver.headless>false</chromedriver.headless>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
 
@@ -90,6 +112,13 @@
 
         <dependency>
             <groupId>info.cukes</groupId>
+            <artifactId>cucumber-jvm</artifactId>
+            <version>${info.cukes.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${info.cukes.version}</version>
             <scope>test</scope>
@@ -110,7 +139,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j.version}</version>
         </dependency>
 
         <dependency>
@@ -170,6 +205,26 @@
         <!--<scope>test</scope>-->
         <!--</dependency>-->
 
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -200,7 +255,7 @@
                     <includes>
                         <include>**/*TestsRunner.java</include>
                     </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>

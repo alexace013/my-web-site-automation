@@ -1,15 +1,15 @@
-package tests.stepsDefinitions;
+package tests.stepsDefinitions.selenium;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
-import tests.Fixture;
+import tests.fixtures.SeleniumFixture;
 import utils.UrlUtil;
 
 @Log4j
-public class CommonPageStepsDefinitions extends Fixture {
+public class CommonPageStepsDefinitions extends SeleniumFixture {
 
     @Given("^user opens (\\D+) page$")
     public void userNavigatesToPage(final String pageUrl) {
